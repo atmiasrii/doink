@@ -1,19 +1,53 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
+import { useParams } from "next/navigation"
 import { PageContainer } from "@/components/layout/page-container"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import gameData from "@/data/game.json"
 import { GameHeaderCard } from "@/components/game/game-header-card"
 import { MatchupFactors } from "@/components/game/matchup-factors"
 import { LineupTable } from "@/components/game/lineup-table"
 import { PlayerPropsTab } from "@/components/game/player-props-tab"
 import { BenchPropsTab } from "@/components/game/bench-props-tab"
 import { TeamPropsTab } from "@/components/game/team-props-tab"
+import gameData from "@/data/game.json"
 
 export default function GamePage() {
   const [activeTab, setActiveTab] = useState("overview")
+  const params = useParams()
+  const slug = params?.slug as string
+
+  const { homeTeam, awayTeam } = useMemo(() => {
+    if (!slug) return { homeTeam: "PHI", awayTeam: "WAS" }
+
+    const parts = slug.split("-vs-")
+    const team1 = parts[0]?.toUpperCase() || "PHI"
+    const team2 = parts[1]?.toUpperCase() || "WAS"
+
+    console.log("[v0] Slug:", slug)
+    console.log("[v0] Extracted teams:", team1, "vs", team2)
+
+    return { homeTeam: team1, awayTeam: team2 }
+  }, [slug])
+
+  const displayGameData = useMemo(() => {
+    return {
+      ...gameData,
+      teamA: {
+        ...gameData.teamA,
+        code: homeTeam,
+        tricode: homeTeam,
+        name: homeTeam, // Use team code as name for now
+      },
+      teamB: {
+        ...gameData.teamB,
+        code: awayTeam,
+        tricode: awayTeam,
+        name: awayTeam, // Use team code as name for now
+      },
+    }
+  }, [homeTeam, awayTeam])
 
   return (
     <PageContainer>
@@ -23,27 +57,27 @@ export default function GamePage() {
           <span>NBA</span>
           <span>›</span>
           <span>
-            {gameData.teamA.name} at {gameData.teamB.name}
+            {homeTeam} vs {awayTeam}
           </span>
         </div>
 
         {/* Game Title */}
         <div>
           <h1 className="text-4xl font-bold text-white mb-2">
-            {gameData.teamA.name} at {gameData.teamB.name}
+            {homeTeam} vs {awayTeam}
           </h1>
           <p className="text-slate-400">TODAY 4:30AM</p>
         </div>
 
         {/* Odds Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
-          <OddsCard label="PHI SPREAD" value="-5" price="+100" />
-          <OddsCard label="WAS SPREAD" value="+5" price="-110" />
+          <OddsCard label={`${homeTeam} SPREAD`} value="-5" price="+100" />
+          <OddsCard label={`${awayTeam} SPREAD`} value="+5" price="-110" />
           <OddsCard label="OVER/UNDER" value="o239" price="-103" />
-          <OddsCard label="PHI ML" value="-180" price="" />
-          <OddsCard label="WAS ML" value="+179" price="" />
-          <OddsCard label="PHI POINTS" value="o121.5" price="-110" />
-          <OddsCard label="WAS POINTS" value="o117.5" price="-108" />
+          <OddsCard label={`${homeTeam} ML`} value="-180" price="" />
+          <OddsCard label={`${awayTeam} ML`} value="+179" price="" />
+          <OddsCard label={`${homeTeam} POINTS`} value="o121.5" price="-110" />
+          <OddsCard label={`${awayTeam} POINTS`} value="o117.5" price="-108" />
         </div>
 
         {/* Tabs */}
@@ -73,17 +107,17 @@ export default function GamePage() {
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6 mt-6">
-            <GameHeaderCard game={gameData} />
-            <MatchupFactors game={gameData} />
-            <LineupTable game={gameData} />
+            <GameHeaderCard game={displayGameData} />
+            <MatchupFactors game={displayGameData} />
+            <LineupTable game={displayGameData} />
           </TabsContent>
 
           <TabsContent value="player-props" className="mt-6">
-            <PlayerPropsTab game={gameData} />
+            <PlayerPropsTab game={displayGameData} />
           </TabsContent>
 
           <TabsContent value="bench-props" className="mt-6">
-            <BenchPropsTab game={gameData} />
+            <BenchPropsTab game={displayGameData} />
           </TabsContent>
 
           <TabsContent value="over-under" className="mt-6">
