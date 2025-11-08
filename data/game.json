@@ -1,0 +1,265 @@
+{
+  "id": "game-001",
+  "sport": "nba",
+  "date": "2024-10-26T22:30:00Z",
+  "teamA": {
+    "id": "team-phi",
+    "name": "76ers",
+    "code": "PHI",
+    "tricode": "PHI",
+    "record": { "wins": 3, "losses": 0 }
+  },
+  "teamB": {
+    "id": "team-was",
+    "name": "Wizards",
+    "code": "WAS",
+    "tricode": "WAS",
+    "record": { "wins": 1, "losses": 2 }
+  },
+  "venue": {
+    "name": "Capital One Arena",
+    "city": "Washington",
+    "overHitRatePct": 55.8,
+    "since": 2024
+  },
+  "odds": {
+    "spread": {
+      "teamA": { "value": -5, "price": 100 },
+      "teamB": { "value": 5, "price": -110 }
+    },
+    "moneyline": { "teamA": -180, "teamB": 179 },
+    "total": { "over": { "value": 239, "price": -103 }, "under": { "value": 239, "price": -110 } },
+    "teamTotals": {
+      "teamA": { "value": 121.5, "price": -110 },
+      "teamB": { "value": 117.5, "price": -108 }
+    }
+  },
+  "last5": {
+    "teamA": [
+      {
+        "date": "10/26",
+        "opp": "CHA",
+        "scoreFor": 120,
+        "scoreAgainst": 110,
+        "ouLine": 20.1,
+        "ouResult": "U",
+        "spreadResult": "+"
+      },
+      {
+        "date": "10/24",
+        "opp": "CHA",
+        "scoreFor": 125,
+        "scoreAgainst": 121,
+        "ouLine": 20.1,
+        "ouResult": "O",
+        "spreadResult": "+"
+      }
+    ],
+    "teamB": [
+      {
+        "date": "10/27",
+        "opp": "PHI",
+        "scoreFor": 113,
+        "scoreAgainst": 139,
+        "ouLine": 22.1,
+        "ouResult": "U",
+        "spreadResult": "-"
+      },
+      {
+        "date": "10/25",
+        "opp": "PHI",
+        "scoreFor": 117,
+        "scoreAgainst": 112,
+        "ouLine": 22.1,
+        "ouResult": "U",
+        "spreadResult": "-"
+      }
+    ]
+  },
+  "ats": {
+    "teamA": {
+      "total": { "wins": 2, "losses": 1 },
+      "home": { "wins": 1, "losses": 1 },
+      "away": { "wins": 1, "losses": 0 },
+      "favored": { "wins": 0, "losses": 1 },
+      "underdog": { "wins": 2, "losses": 0 }
+    },
+    "teamB": {
+      "total": { "wins": 1, "losses": 2 },
+      "home": { "wins": 0, "losses": 1 },
+      "away": { "wins": 1, "losses": 1 },
+      "favored": { "wins": 0, "losses": 1 },
+      "underdog": { "wins": 1, "losses": 1 }
+    }
+  },
+  "lineups": {
+    "teamA": [
+      {
+        "id": "p1",
+        "name": "Joel Embiid",
+        "pos": "C",
+        "gs": 52,
+        "statsAvg": { "pts": 28.3, "reb": 11.3, "ast": 4.1, "threePm": 2.1, "pra": 43.8 },
+        "currentLines": { "pts": 28.5 }
+      },
+      {
+        "id": "p2",
+        "name": "Tyrese Maxey",
+        "pos": "PG",
+        "gs": 48,
+        "statsAvg": { "pts": 22.1, "reb": 3.2, "ast": 8.5, "threePm": 2.8, "pra": 33.8 },
+        "currentLines": { "pts": 22.5 }
+      },
+      {
+        "id": "p3",
+        "name": "Scottie Barnes",
+        "pos": "SF",
+        "gs": 57,
+        "statsAvg": { "pts": 15.1, "reb": 6.1, "ast": 1.8, "threePm": 1.2, "pra": 23.0 },
+        "currentLines": { "pts": 15.5 }
+      },
+      {
+        "id": "p4",
+        "name": "Kyle Lowry",
+        "pos": "PG",
+        "gs": 41,
+        "statsAvg": { "pts": 8.2, "reb": 2.5, "ast": 5.6, "threePm": 0.5, "pra": 16.3 },
+        "currentLines": { "pts": 8.5 }
+      },
+      {
+        "id": "p5",
+        "name": "P.J. Tucker",
+        "pos": "PF",
+        "gs": 19,
+        "statsAvg": { "pts": 4.8, "reb": 3.2, "ast": 0.6, "threePm": 0.2, "pra": 8.6 },
+        "currentLines": { "pts": 5.5 }
+      }
+    ],
+    "teamA_bench": [
+      {
+        "id": "pb1",
+        "name": "Tobias Harris",
+        "pos": "PF",
+        "gs": 22,
+        "statsAvg": { "pts": 11.5, "reb": 4.2, "ast": 1.2, "threePm": 0.8, "pra": 17.0 },
+        "currentLines": { "pts": 12.0 }
+      },
+      {
+        "id": "pb2",
+        "name": "De'Anthony Melton",
+        "pos": "SG",
+        "gs": 15,
+        "statsAvg": { "pts": 6.3, "reb": 2.1, "ast": 2.3, "threePm": 0.9, "pra": 10.6 },
+        "currentLines": { "pts": 6.5 }
+      },
+      {
+        "id": "pb3",
+        "name": "Jeff Dowtin Jr.",
+        "pos": "PG",
+        "gs": 8,
+        "statsAvg": { "pts": 5.2, "reb": 1.8, "ast": 1.9, "threePm": 0.6, "pra": 8.9 },
+        "currentLines": { "pts": 5.5 }
+      },
+      {
+        "id": "pb4",
+        "name": "Mike Muscala",
+        "pos": "C",
+        "gs": 12,
+        "statsAvg": { "pts": 3.4, "reb": 2.5, "ast": 0.5, "threePm": 0.2, "pra": 6.3 },
+        "currentLines": { "pts": 3.5 }
+      },
+      {
+        "id": "pb5",
+        "name": "Jalen McDaniels",
+        "pos": "SF",
+        "gs": 5,
+        "statsAvg": { "pts": 2.1, "reb": 1.5, "ast": 0.3, "threePm": 0.1, "pra": 3.9 },
+        "currentLines": { "pts": 2.5 }
+      }
+    ],
+    "teamB": [
+      {
+        "id": "p6",
+        "name": "Bradley Beal",
+        "pos": "SG",
+        "gs": 56,
+        "statsAvg": { "pts": 25.1, "reb": 3.8, "ast": 3.1, "threePm": 2.1, "pra": 32.0 },
+        "currentLines": { "pts": 25.5 }
+      },
+      {
+        "id": "p7",
+        "name": "Kyle Kuzma",
+        "pos": "PF",
+        "gs": 38,
+        "statsAvg": { "pts": 18.7, "reb": 8.2, "ast": 2.5, "threePm": 1.7, "pra": 29.4 },
+        "currentLines": { "pts": 19.0 }
+      },
+      {
+        "id": "p8",
+        "name": "Daniel Gafford",
+        "pos": "C",
+        "gs": 21,
+        "statsAvg": { "pts": 13.9, "reb": 8.7, "ast": 1.1, "threePm": 0.3, "pra": 23.6 },
+        "currentLines": { "pts": 14.5 }
+      },
+      {
+        "id": "p9",
+        "name": "Tyus Jones",
+        "pos": "PG",
+        "gs": 67,
+        "statsAvg": { "pts": 9.0, "reb": 2.5, "ast": 6.4, "threePm": 1.6, "pra": 19.0 },
+        "currentLines": { "pts": 9.5 }
+      },
+      {
+        "id": "p10",
+        "name": "Andre Drummond",
+        "pos": "C",
+        "gs": 56,
+        "statsAvg": { "pts": 5.1, "reb": 9.8, "ast": 1.1, "threePm": 0.1, "pra": 16.0 },
+        "currentLines": { "pts": 5.5 }
+      }
+    ],
+    "teamB_bench": [
+      {
+        "id": "pb6",
+        "name": "Isaiah Thomas",
+        "pos": "PG",
+        "gs": 22,
+        "statsAvg": { "pts": 12.5, "reb": 2.2, "ast": 3.8, "threePm": 1.2, "pra": 18.5 },
+        "currentLines": { "pts": 13.0 }
+      },
+      {
+        "id": "pb7",
+        "name": "Deni Avdija",
+        "pos": "SF",
+        "gs": 15,
+        "statsAvg": { "pts": 8.3, "reb": 4.1, "ast": 1.3, "threePm": 0.7, "pra": 13.6 },
+        "currentLines": { "pts": 8.5 }
+      },
+      {
+        "id": "pb8",
+        "name": "Marvin Bagley III",
+        "pos": "PF",
+        "gs": 8,
+        "statsAvg": { "pts": 6.2, "reb": 3.8, "ast": 0.9, "threePm": 0.2, "pra": 10.9 },
+        "currentLines": { "pts": 6.5 }
+      },
+      {
+        "id": "pb9",
+        "name": "Johnny Davis",
+        "pos": "SG",
+        "gs": 12,
+        "statsAvg": { "pts": 4.4, "reb": 1.5, "ast": 0.8, "threePm": 0.3, "pra": 6.9 },
+        "currentLines": { "pts": 4.5 }
+      },
+      {
+        "id": "pb10",
+        "name": "Ish Smith",
+        "pos": "PG",
+        "gs": 5,
+        "statsAvg": { "pts": 3.1, "reb": 0.5, "ast": 1.3, "threePm": 0.2, "pra": 5.1 },
+        "currentLines": { "pts": 3.5 }
+      }
+    ]
+  }
+}
