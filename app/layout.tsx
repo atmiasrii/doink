@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.className} bg-slate-950 text-slate-100`}>
+      <body className={`${geistSans.className} bg-slate-950 text-slate-100`} suppressHydrationWarning>
         <AppSidebar />
         <AppHeader />
         {children}

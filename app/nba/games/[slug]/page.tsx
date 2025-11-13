@@ -1,53 +1,243 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import { useParams } from "next/navigation"
-import { PageContainer } from "@/components/layout/page-container"
-import { Card } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { GameHeaderCard } from "@/components/game/game-header-card"
-import { MatchupFactors } from "@/components/game/matchup-factors"
-import { LineupTable } from "@/components/game/lineup-table"
-import { PlayerPropsTab } from "@/components/game/player-props-tab"
-import { BenchPropsTab } from "@/components/game/bench-props-tab"
-import { TeamPropsTab } from "@/components/game/team-props-tab"
-import gameData from "@/data/game.json"
+import { useState, useMemo, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { PageContainer } from "@/components/layout/page-container";
+import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { GameHeaderCard } from "@/components/game/game-header-card";
+import { MatchupFactors } from "@/components/game/matchup-factors";
+import { LineupTable } from "@/components/game/lineup-table";
+import { PlayerPropsTab } from "@/components/game/player-props-tab";
+import { BenchPropsTab } from "@/components/game/bench-props-tab";
+import { TeamPropsTab } from "@/components/game/team-props-tab";
+import { useSportsData, getPlayerRecentGames, getPlayerAverages } from "@/hooks/use-sports-data";
+import useTeamRostersById from "@/hooks/use-team-rosters-by-id";
+
+function parseSlug(slug: string) {
+  const parts = slug.split("-");
+  const home = parts[0];
+  const away = parts[2];
+  const gameNum = parts[3] === "game" ? Number(parts[4]) : undefined;
+  return { home, away, gameNum };
+}
 
 export default function GamePage() {
-  const [activeTab, setActiveTab] = useState("overview")
-  const params = useParams()
-  const slug = params?.slug as string
+  const [activeTab, setActiveTab] = useState("overview");
+  const [loadingTime, setLoadingTime] = useState(0);
+  const [showContent, setShowContent] = useState(false);
+  const params = useParams() as { slug: string };
+  const router = useRouter();
+  const { slug } = params;
 
-  const { homeTeam, awayTeam } = useMemo(() => {
-    if (!slug) return { homeTeam: "PHI", awayTeam: "WAS" }
+  const { home, away } = useMemo(() => parseSlug(slug), [slug]);
+  const { gameData, playerStatsByName, teamIdMap, loading: dataLoading } = useSportsData();
+  const { rosters, loading: rosterLoading } = useTeamRostersById();
 
-    const parts = slug.split("-vs-")
-    const team1 = parts[0]?.toUpperCase() || "PHI"
-    const team2 = parts[1]?.toUpperCase() || "WAS"
+  const isDataLoaded = !dataLoading && !rosterLoading;
 
-    console.log("[v0] Slug:", slug)
-    console.log("[v0] Extracted teams:", team1, "vs", team2)
+  // Timer for loading screen - continues until content is ready to show
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (!showContent) {
+      interval = setInterval(() => {
+        setLoadingTime((prev) => prev + 0.1);
+      }, 100);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [showContent]);
 
-    return { homeTeam: team1, awayTeam: team2 }
-  }, [slug])
+  // Show content only after data is loaded and processed
+  useEffect(() => {
+    if (isDataLoaded && gameData?.length && rosters && Object.keys(teamIdMap).length > 0) {
+      // Add small delay to ensure all processing is complete
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      setShowContent(false);
+      setLoadingTime(0);
+    }
+  }, [isDataLoaded, gameData, rosters, teamIdMap]);
+
+  const game = useMemo(() => {
+    if (!gameData?.length) return null;
+
+    const homeCode = home?.toUpperCase();
+    const awayCode = away?.toUpperCase();
+
+    const homeEntry = Object.entries(rosters || {}).find(([, t]: any) => t.team_code === homeCode);
+    const awayEntry = Object.entries(rosters || {}).find(([, t]: any) => t.team_code === awayCode);
+
+    if (homeEntry && awayEntry) {
+      const homeId = Number(homeEntry[0]);
+      const awayId = Number(awayEntry[0]);
+      return gameData.find((g: any) => g.home_team_id === homeId && g.away_team_id === awayId) || null;
+    }
+
+    return (
+      gameData.find((g: any) => g.home_team_name?.toLowerCase() === home && g.away_team_name?.toLowerCase() === away) ||
+      gameData.find((g: any) => String(g.home_team_id) === home || String(g.away_team_id) === away) ||
+      null
+    );
+  }, [gameData, home, away, rosters]);
+
+  const homeRoster = rosters?.[String(game?.home_team_id)];
+  const awayRoster = rosters?.[String(game?.away_team_id)];
+
+  const mapRosterToPlayers = useMemo(() => {
+    if (!teamIdMap || Object.keys(teamIdMap).length === 0) return () => [];
+    
+    return (players: any[], teamCode: string) =>
+      (players || []).map((p, index) => {
+        const playerName = p.player_name || `Player-${index}`;
+        const recentGames = getPlayerRecentGames(playerStatsByName, playerName, teamIdMap, 10);
+        const last5 = recentGames.slice(0, 5);
+        const averageSample = last5.length > 0 ? last5 : recentGames;
+        const averages = getPlayerAverages(averageSample);
+
+        return {
+          id: String(p.player_id || `${teamCode}-${index}`),
+          name: playerName,
+          pos: p.position || "",
+          gs: recentGames.length,
+          statsAvg: averages,
+          recentGames,
+          last5Games: last5,
+          currentLines: {
+            pts: averages.pts,
+            reb: averages.reb,
+            ast: averages.ast,
+          },
+        };
+      });
+  }, [playerStatsByName, teamIdMap]);
 
   const displayGameData = useMemo(() => {
+    if (!game || !homeRoster || !awayRoster) return null;
+    
+    const defaultRecord = { wins: 0, losses: 0 };
+    const defaultAtsRecord = {
+      total: defaultRecord,
+      home: defaultRecord,
+      away: defaultRecord,
+      favored: defaultRecord,
+      underdog: defaultRecord,
+    };
+    
+    const defaultLast5Games = Array(5).fill(null).map((_, idx) => ({
+      date: "N/A",
+      opp: "TBD",
+      result: "W",
+      score: "0-0",
+      ats: "W",
+      ou: "O",
+    }));
+    
     return {
-      ...gameData,
+      id: game.game_id || "",
+      sport: "NBA",
+      date: new Date(game.date || Date.now()).toLocaleDateString(),
+      time: "4:30 AM",
+      venue: {
+        name: "Arena",
+        city: "City",
+      },
       teamA: {
-        ...gameData.teamA,
-        code: homeTeam,
-        tricode: homeTeam,
-        name: homeTeam, // Use team code as name for now
+        name: game.home_team_name,
+        code: String(game.home_team_id),
+        tricode: home.toUpperCase(),
+        record: defaultRecord,
       },
       teamB: {
-        ...gameData.teamB,
-        code: awayTeam,
-        tricode: awayTeam,
-        name: awayTeam, // Use team code as name for now
+        name: game.away_team_name,
+        code: String(game.away_team_id),
+        tricode: away.toUpperCase(),
+        record: defaultRecord,
       },
-    }
-  }, [homeTeam, awayTeam])
+      ats: {
+        teamA: defaultAtsRecord,
+        teamB: defaultAtsRecord,
+      },
+      ou: {
+        teamA: {
+          total: defaultRecord,
+          home: defaultRecord,
+          away: defaultRecord,
+        },
+        teamB: {
+          total: defaultRecord,
+          home: defaultRecord,
+          away: defaultRecord,
+        },
+      },
+      last5: {
+        teamA: defaultLast5Games,
+        teamB: defaultLast5Games,
+      },
+      lineups: {
+        teamA: mapRosterToPlayers(homeRoster.starters, home.toUpperCase()),
+        teamB: mapRosterToPlayers(awayRoster.starters, away.toUpperCase()),
+        teamA_bench: mapRosterToPlayers(homeRoster.bench, home.toUpperCase()),
+        teamB_bench: mapRosterToPlayers(awayRoster.bench, away.toUpperCase()),
+      },
+    };
+  }, [game, homeRoster, awayRoster, home, away, mapRosterToPlayers]);
+
+  // All hooks are called before any conditional returns
+  if (!showContent) {
+    return (
+      <PageContainer>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="relative w-16 h-16 mx-auto mb-4">
+              <div className="absolute top-0 left-0 w-full h-full border-4 border-slate-700 rounded-full"></div>
+              <div className="absolute top-0 left-0 w-full h-full border-4 border-emerald-500 rounded-full border-t-transparent animate-spin"></div>
+            </div>
+            <h2 className="text-xl font-semibold text-white mb-2">Loading Game Data</h2>
+            <p className="text-slate-400 mb-3">Fetching player stats and rosters...</p>
+            <div className="flex items-center justify-center gap-2 text-emerald-400">
+              <svg 
+                className="w-5 h-5" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10" strokeWidth="2" stroke="currentColor" fill="none"/>
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d="M12 6v6l4 2"
+                />
+              </svg>
+              <span className="text-lg font-mono font-semibold">
+                {loadingTime.toFixed(1)}s
+              </span>
+            </div>
+          </div>
+        </div>
+      </PageContainer>
+    );
+  }
+
+  if (!game) {
+    return (
+      <div className="text-gray-300 p-6">
+        Game not found.{" "}
+        <button className="underline" onClick={() => router.back()}>
+          Go back
+        </button>
+      </div>
+    );
+  }
+
+  if (!homeRoster || !awayRoster || !displayGameData) {
+    return <div className="text-gray-300 p-6">Roster data not available for this matchup.</div>;
+  }
 
   return (
     <PageContainer>
@@ -57,67 +247,42 @@ export default function GamePage() {
           <span>NBA</span>
           <span>›</span>
           <span>
-            {homeTeam} vs {awayTeam}
+            {home.toUpperCase()} vs {away.toUpperCase()}
           </span>
         </div>
 
         {/* Game Title */}
         <div>
           <h1 className="text-4xl font-bold text-white mb-2">
-            {homeTeam} vs {awayTeam}
+            {home.toUpperCase()} vs {away.toUpperCase()}
           </h1>
           <p className="text-slate-400">TODAY 4:30AM</p>
-        </div>
-
-        {/* Odds Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
-          <OddsCard label={`${homeTeam} SPREAD`} value="-5" price="+100" />
-          <OddsCard label={`${awayTeam} SPREAD`} value="+5" price="-110" />
-          <OddsCard label="OVER/UNDER" value="o239" price="-103" />
-          <OddsCard label={`${homeTeam} ML`} value="-180" price="" />
-          <OddsCard label={`${awayTeam} ML`} value="+179" price="" />
-          <OddsCard label={`${homeTeam} POINTS`} value="o121.5" price="-110" />
-          <OddsCard label={`${awayTeam} POINTS`} value="o117.5" price="-108" />
         </div>
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="bg-slate-800/50 border-b border-slate-700/50 w-full justify-start overflow-x-auto">
-            <TabsTrigger className="text-card" value="overview">
-              Game Overview
-            </TabsTrigger>
-            <TabsTrigger className="text-card" value="player-props">
-              Player Props
-            </TabsTrigger>
-            <TabsTrigger className="text-card" value="bench-props">
-              Bench Props
-            </TabsTrigger>
-            <TabsTrigger className="text-card" value="over-under">
-              Over / Under
-            </TabsTrigger>
-            <TabsTrigger className="text-card" value="team-props">
-              Team Props
-            </TabsTrigger>
-            <TabsTrigger className="text-card" value="sides">
-              Sides
-            </TabsTrigger>
-            <TabsTrigger className="text-card" value="my-bets">
-              My Bets
-            </TabsTrigger>
+            <TabsTrigger value="overview">Game Overview</TabsTrigger>
+            <TabsTrigger value="player-props">Player Props</TabsTrigger>
+            <TabsTrigger value="bench-props">Bench Props</TabsTrigger>
+            <TabsTrigger value="over-under">Over / Under</TabsTrigger>
+            <TabsTrigger value="team-props">Team Props</TabsTrigger>
+            <TabsTrigger value="sides">Sides</TabsTrigger>
+            <TabsTrigger value="my-bets">My Bets</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6 mt-6">
-            <GameHeaderCard game={displayGameData} />
-            <MatchupFactors game={displayGameData} />
-            <LineupTable game={displayGameData} />
+            <GameHeaderCard game={displayGameData as any} />
+            <MatchupFactors game={displayGameData as any} />
+            <LineupTable game={displayGameData as any} />
           </TabsContent>
 
           <TabsContent value="player-props" className="mt-6">
-            <PlayerPropsTab game={displayGameData} />
+            <PlayerPropsTab game={displayGameData as any} />
           </TabsContent>
 
           <TabsContent value="bench-props" className="mt-6">
-            <BenchPropsTab game={displayGameData} />
+            <BenchPropsTab game={displayGameData as any} />
           </TabsContent>
 
           <TabsContent value="over-under" className="mt-6">
@@ -144,15 +309,5 @@ export default function GamePage() {
         </Tabs>
       </div>
     </PageContainer>
-  )
-}
-
-function OddsCard({ label, value, price }: { label: string; value: string; price?: string }) {
-  return (
-    <Card className="p-4 bg-slate-900/60 border border-slate-700/50 rounded-xl hover:bg-slate-900/80 transition-colors">
-      <div className="text-xs font-semibold text-white mb-2 uppercase tracking-wide">{label}</div>
-      <div className="text-2xl font-bold text-white">{value}</div>
-      {price && <div className="text-xs text-slate-300 mt-2">{price}</div>}
-    </Card>
-  )
+  );
 }

@@ -17,6 +17,8 @@ interface Player {
   currentLines: {
     pts: number
   }
+  last5Games?: any[]
+  recentGames?: any[]
 }
 
 interface GameData {
@@ -63,9 +65,11 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
               <PlayerCard
                 key={player.id}
                 playerName={player.name}
-                teamName={game.teamA.code}
+                teamName={game.teamA.name}
                 position={player.pos}
-                opponent={game.teamB.code}
+                opponent={game.teamB.name}
+                statLines={player.recentGames ?? player.last5Games}
+                averages={player.statsAvg}
                 location="Away"
                 status="Expected"
               />
@@ -81,9 +85,11 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
               <PlayerCard
                 key={player.id}
                 playerName={player.name}
-                teamName={game.teamB.code}
+                teamName={game.teamB.name}
                 position={player.pos}
-                opponent={game.teamA.code}
+                opponent={game.teamA.name}
+                statLines={player.recentGames ?? player.last5Games}
+                averages={player.statsAvg}
                 location="Home"
                 status="Expected"
               />

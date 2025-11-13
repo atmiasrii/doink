@@ -1,0 +1,2832 @@
+{
+  "1610612759": {
+    "team_code": "SAS",
+    "starters": [
+      {
+        "player_name": "De'Aaron Fox",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Stephon Castle",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Devin Vassell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Harrison Barnes",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Victor Wembanyama",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Julian Champagnie",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Keldon Johnson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jeremy Sochan",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kelly Olynyk",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Luke Kornet",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Bismack Biyombo",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dylan Harper",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jordan McLaughlin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Lindy Waters III",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Carter Bryant",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "David Jones Garcia",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Harrison Ingram",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Riley Minix",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612762": {
+    "team_code": "UTA",
+    "starters": [
+      {
+        "player_name": "Keyonte George",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Svi Mykhailiuk",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Lauri Markkanen",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Taylor Hendricks",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jusuf Nurkic",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Kyle Anderson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ace Bailey",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Walter Clayton Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Collier",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kyle Filipowski",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Elijah Harkless",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Walker Kessler",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Kevin Love",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brice Sensabaugh",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Georges Niang",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "John Tonje",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Oscar Tshiebwe",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Cody Williams",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612758": {
+    "team_code": "SAC",
+    "starters": [
+      {
+        "player_name": "Dennis Schroder",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Russell Westbrook",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Zach LaVine",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "DeMar DeRozan",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Domantas Sabonis",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Keon Ellis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Malik Monk",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Keegan Murray",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Dario Saric",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Precious Achiuwa",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Drew Eubanks",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dylan Cardwell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Devin Carter",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nique Clifford",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Doug McDermott",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Daeqwon Plowden",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Maxime Raynaud",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Stevens",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612756": {
+    "team_code": "PHX",
+    "starters": [
+      {
+        "player_name": "Devin Booker",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Green",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dillon Brooks",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Royce O'Neale",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mark Williams",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Grayson Allen",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Koby Brea",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ryan Dunn",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Rasheer Fleming",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Collin Gillespie",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jordan Goodwin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nigel Hayes-Davis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "CJ Huntley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Oso Ighodaro",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Livers",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Khaman Maluach",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nick Richards",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612740": {
+    "team_code": "NOP",
+    "starters": [
+      {
+        "player_name": "Jeremiah Fears",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Trey Murphy III",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Herbert Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Zion Williamson",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Yves Missi",
+        "injured": true,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Jose Alvarado",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jordan Poole",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Saddiq Bey",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jordan Hawkins",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Micah Peavy",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Trey Alexander",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Derik Queen",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kevon Looney",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "DeAndre Jordan",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Karlo Matkovic",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bryce McGowens",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Hunter Dickinson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dejounte Murray",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612757": {
+    "team_code": "POR",
+    "starters": [
+      {
+        "player_name": "Jrue Holiday",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Shaedon Sharpe",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Deni Avdija",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Toumani Camara",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Donovan Clingan",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Scoot Henderson",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Caleb Love",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Rayan Rupert",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Blake Wesley",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Sidy Cissoko",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kris Murray",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jerami Grant",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Matisse Thybulle",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Duop Reath",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Robert Williams III",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Yang Hansen",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Damian Lillard",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Javonte Cooke",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612763": {
+    "team_code": "MEM",
+    "starters": [
+      {
+        "player_name": "Ja Morant",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kentavious Caldwell-Pope",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaylen Wells",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaren Jackson Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Zach Edey",
+        "injured": true,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Cam Spencer",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Javon Small",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ty Jerome",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Scotty Pippen Jr.",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Vince Williams Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "John Konchar",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Santi Aldama",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "GG Jackson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Cedric Coward",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brandon Clarke",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jock Landale",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Olivier-Maxence Prosper",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612760": {
+    "team_code": "OKC",
+    "starters": [
+      {
+        "player_name": "Shai Gilgeous-Alexander",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Luguentz Dort",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Williams",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Chet Holmgren",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Hartenstein",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Alex Caruso",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Cason Wallace",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Joe",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ajay Mitchell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Aaron Wiggins",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nikola Topic",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Kenrich Williams",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Ousmane Dieng",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brooks Barnhizer",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Branden Carlson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Thomas Sorber",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaylin Williams",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612747": {
+    "team_code": "LAL",
+    "starters": [
+      {
+        "player_name": "Luka Doncic",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Austin Reaves",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Marcus Smart",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Rui Hachimura",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Deandre Ayton",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "LeBron James",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Gabe Vincent",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Dalton Knecht",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jake LaRavia",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Christian Koloko",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaxson Hayes",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jarred Vanderbilt",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nick Smith Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Adou Thiero",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Maxi Kleber",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Bronny James",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Chris Manon",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612746": {
+    "team_code": "LAC",
+    "starters": [
+      {
+        "player_name": "James Harden",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bradley Beal",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kawhi Leonard",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Derrick Jones Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ivica Zubac",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Nicolas Batum",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bogdan Bogdanovic",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kobe Brown",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Cam Christie",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "John Collins",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kris Dunn",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brook Lopez",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jordan Miller",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Yanic Konan Niederhauser",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Chris Paul",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kobe Sanders",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jahmyl Telfort",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612745": {
+    "team_code": "HOU",
+    "starters": [
+      {
+        "player_name": "Amen Thompson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Josh Okogie",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kevin Durant",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jabari Smith Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Alperen Sengun",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Steven Adams",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Clint Capela",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Crawford",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "JD Davison",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tari Eason",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dorian Finney-Smith",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jeff Green",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kevon Harris",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Aaron Holiday",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Reed Sheppard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jae'Sean Tate",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Fred VanVleet",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612742": {
+    "team_code": "DAL",
+    "starters": [
+      {
+        "player_name": "Cooper Flagg",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Klay Thompson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "P.J. Washington",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Anthony Davis",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Dereck Lively II",
+        "injured": true,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Max Christie",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Moussa Cisse",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dante Exum",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Daniel Gafford",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaden Hardy",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kyrie Irving",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Miles Kelly",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Naji Marshall",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Caleb Martin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ryan Nembhard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dwight Powell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "D'Angelo Russell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brandon Williams",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612750": {
+    "team_code": "MIN",
+    "starters": [
+      {
+        "player_name": "Donte DiVincenzo",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Anthony Edwards",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaden McDaniels",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Julius Randle",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Rudy Gobert",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Joan Beringer",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaylen Clark",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mike Conley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Rob Dillingham",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Enrique Freeman",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bones Hyland",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Joe Ingles",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Johnny Juzang",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Leonard Miller",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Naz Reid",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Terrence Shannon Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Rocco Zikarsky",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612743": {
+    "team_code": "DEN",
+    "starters": [
+      {
+        "player_name": "Jamal Murray",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Christian Braun",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Cameron Johnson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Aaron Gordon",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nikola Jokic",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Bruce Brown",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tim Hardaway Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jonas Valanciunas",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Peyton Watson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Julian Strawther",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Zeke Nnaji",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Pickett",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "DaRon Holmes II",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Spencer Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Hunter Tyson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Curtis Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tamar Bates",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612744": {
+    "team_code": "GSW",
+    "starters": [
+      {
+        "player_name": "Stephen Curry",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jimmy Butler III",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jonathan Kuminga",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Draymond Green",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Quinten Post",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Buddy Hield",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brandin Podziemski",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Moses Moody",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Gary Payton II",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Al Horford",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Trayce Jackson-Davis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "De'Anthony Melton",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Gui Santos",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jackson Rowe",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Will Richard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Pat Spencer",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Alex Toohey",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612764": {
+    "team_code": "WAS",
+    "starters": [
+      {
+        "player_name": "CJ McCollum",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kyshawn George",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Khris Middleton",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Bilal Coulibaly",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Alex Sarr",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Bub Carrington",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tre Johnson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "AJ Johnson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Sharife Cooper",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Corey Kispert",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Cam Whitmore",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Justin Champagnie",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Will Riley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Marvin Bagley III",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tristan Vukcevic",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Anthony Gill",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Malaki Branham",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jamir Watkins",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612749": {
+    "team_code": "MIL",
+    "starters": [
+      {
+        "player_name": "Ryan Rollins",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "AJ Green",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Gary Trent Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Giannis Antetokounmpo",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Myles Turner",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Cole Anthony",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mark Sears",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kevin Porter Jr.",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Amir Coffey",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Gary Harris",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Andre Jackson Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kyle Kuzma",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bobby Portis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Taurean Prince",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jericho Sims",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Pete Nance",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Thanasis Antetokounmpo",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Alex Antetokounmpo",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612761": {
+    "team_code": "TOR",
+    "starters": [
+      {
+        "player_name": "Immanuel Quickley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "RJ Barrett",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brandon Ingram",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Scottie Barnes",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jakob Poeltl",
+        "injured": true,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Jamal Shead",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ja'Kobe Walter",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Chucky Hepburn",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "A.J. Lawson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Gradey Dick",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ochai Agbaji",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Garrett Temple",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Collin Murray-Boyles",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jamison Battle",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jonathan Mogbo",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Sandro Mamukelashvili",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Alijah Martin",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612753": {
+    "team_code": "ORL",
+    "starters": [
+      {
+        "player_name": "Jalen Suggs",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Desmond Bane",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Franz Wagner",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Paolo Banchero",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Wendell Carter Jr.",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Tyus Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Anthony Black",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jase Richardson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jett Howard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tristan da Silva",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jonathan Isaac",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Noah Penda",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Goga Bitadze",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Orlando Robinson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Colin Castleton",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jamal Cain",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Moritz Wagner",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612754": {
+    "team_code": "IND",
+    "starters": [
+      {
+        "player_name": "Andrew Nembhard",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Bennedict Mathurin",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Aaron Nesmith",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Pascal Siakam",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Jackson",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Tyrese Haliburton",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "T.J. McConnell",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Monte Morris",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "RayJ Dennis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Taelon Peter",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Quenton Jackson",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Kam Jones",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Ben Sheppard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Johnny Furphy",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Cody Martin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jarace Walker",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Obi Toppin",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Tony Bradley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jay Huff",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jeremiah Robinson-Earl",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612755": {
+    "team_code": "PHI",
+    "starters": [
+      {
+        "player_name": "Tyrese Maxey",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "VJ Edgecombe",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kelly Oubre Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Paul George",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Joel Embiid",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Jared McCain",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Quentin Grimes",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kyle Lowry",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Eric Gordon",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Justin Edwards",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jabari Walker",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Adem Bona",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Andre Drummond",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Johni Broome",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Hunter Sallis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dominick Barlow",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Trendon Watford",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612748": {
+    "team_code": "MIA",
+    "starters": [
+      {
+        "player_name": "Davion Mitchell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Norman Powell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Andrew Wiggins",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Pelle Larsson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bam Adebayo",
+        "injured": true,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Tyler Herro",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jaime Jaquez Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Simone Fontecchio",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nikola Jovic",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Keshad Johnson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Myron Gardner",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Vladislav Goldin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kasparas Jakucionis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dru Smith",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kel'el Ware",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Terry Rozier",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jahmir Young",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612765": {
+    "team_code": "DET",
+    "starters": [
+      {
+        "player_name": "Cade Cunningham",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Duncan Robinson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ausar Thompson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tobias Harris",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Duren",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Javonte Green",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ronald Holland II",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaden Ivey",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Daniss Jenkins",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Colby Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaac Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Bobi Klintman",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Chaz Lanier",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Caris LeVert",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Paul Reed",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Marcus Sasser",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Tolu Smith",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Isaiah Stewart",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612752": {
+    "team_code": "NYK",
+    "starters": [
+      {
+        "player_name": "Jalen Brunson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mikal Bridges",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "OG Anunoby",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Karl-Anthony Towns",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mitchell Robinson",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Josh Hart",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Miles McBride",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jordan Clarkson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tyler Kolek",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Landry Shamet",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Pacome Dadiet",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kevin McCullar Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Guerschon Yabusele",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tosan Evbuomwan",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mohamed Diawara",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ariel Hukporti",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Trey Jemison III",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612738": {
+    "team_code": "BOS",
+    "starters": [
+      {
+        "player_name": "Derrick White",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Payton Pritchard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaylen Brown",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Josh Minott",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Neemias Queta",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Anfernee Simons",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Sam Hauser",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Hugo Gonzalez",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Baylor Scheierman",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jordan Walsh",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Max Shulga",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Luka Garza",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Xavier Tillman",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Chris Boucher",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Amari Williams",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ron Harper Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jayson Tatum",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612741": {
+    "team_code": "CHI",
+    "starters": [
+      {
+        "player_name": "Josh Giddey",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Coby White",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Isaac Okoro",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Matas Buzelis",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nikola Vucevic",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Tre Jones",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jevon Carter",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kevin Huerter",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ayo Dosunmu",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Trentyn Flowers",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Patrick Williams",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Julian Phillips",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dalen Terry",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Noa Essengue",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Smith",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Lachlan Olbrich",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Emanuel Miller",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Zach Collins",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612737": {
+    "team_code": "ATL",
+    "starters": [
+      {
+        "player_name": "Nickeil Alexander-Walker",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dyson Daniels",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Zaccharie Risacher",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Johnson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kristaps Porzingis",
+        "injured": true,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Trae Young",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Luke Kennard",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Vit Krejci",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Keaton Wallace",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Caleb Houstan",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Onyeka Okongwu",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mouhamed Gueye",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Asa Newell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "N'Faly Dante",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nikola Durisic",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jacob Toppin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Eli John N'Diaye",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612751": {
+    "team_code": "BKN",
+    "starters": [
+      {
+        "player_name": "Egor Demin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Terance Mann",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Michael Porter Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Noah Clowney",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nic Claxton",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Cam Thomas",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Haywood Highsmith",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Day'Ron Sharpe",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ziaire Williams",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jalen Wilson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Danny Wolf",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ben Saraf",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nolan Traore",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Drake Powell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tyrese Martin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "E.J. Liddell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tyson Etienne",
+        "injured": false,
+        "position": null
+      }
+    ]
+  },
+  "1610612739": {
+    "team_code": "CLE",
+    "starters": [
+      {
+        "player_name": "Darius Garland",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Donovan Mitchell",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "De'Andre Hunter",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Evan Mobley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jarrett Allen",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Lonzo Ball",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Sam Merrill",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Jaylon Tyson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Craig Porter Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tyrese Proctor",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Dean Wade",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Larry Nance Jr.",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Chris Livingston",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Luke Travers",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Nae'Qwan Tomlin",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Thomas Bryant",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Max Strus",
+        "injured": true,
+        "position": null
+      }
+    ]
+  },
+  "1610612766": {
+    "team_code": "CHA",
+    "starters": [
+      {
+        "player_name": "LaMelo Ball",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Collin Sexton",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Kon Knueppel",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Miles Bridges",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Ryan Kalkbrenner",
+        "injured": false,
+        "position": null
+      }
+    ],
+    "bench": [
+      {
+        "player_name": "Tre Mann",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "KJ Simpson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Sion James",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Josh Green",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Liam McNeeley",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Pat Connaughton",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Grant Williams",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Moussa Diabate",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Mason Plumlee",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Tidjane Salaun",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Brandon Miller",
+        "injured": true,
+        "position": null
+      },
+      {
+        "player_name": "Drew Peterson",
+        "injured": false,
+        "position": null
+      },
+      {
+        "player_name": "Antonio Reeves",
+        "injured": false,
+        "position": null
+      }
+    ]
+  }
+}
