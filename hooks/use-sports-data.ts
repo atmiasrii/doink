@@ -79,11 +79,29 @@ interface GameData {
   home_win: number
 }
 
+let cachedGameDataMap: Record<string, GameData> = {}
+
+function toGameKeys(gameId: string | number | undefined | null): string[] {
+  if (gameId == null) return []
+
+  const raw = String(gameId)
+  const trimmed = raw.replace(/^0+/, "")
+  const numeric = Number.parseInt(raw, 10)
+  const keys = new Set<string>()
+
+  if (raw) keys.add(raw)
+  if (trimmed) keys.add(trimmed)
+  if (!Number.isNaN(numeric)) keys.add(String(numeric))
+
+  return Array.from(keys)
+}
+
 export function useSportsData() {
   const [playerStats, setPlayerStats] = useState<PlayerStat[]>([])
   const [playerStatsByName, setPlayerStatsByName] = useState<Record<string, PlayerStat[]>>({})
   const [teamStats, setTeamStats] = useState<TeamStat[]>([])
   const [gameData, setGameData] = useState<GameData[]>([])
+  const [gameDataMap, setGameDataMap] = useState<Record<string, GameData>>({})
   const [teamIdMap, setTeamIdMap] = useState<Record<number, string>>({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -137,10 +155,22 @@ export function useSportsData() {
           return acc;
         }, {});
 
+        // Build game data map by game_id for fast lookups
+        const gameMap: Record<string, GameData> = {}
+        gamesData.forEach((game: GameData) => {
+          const keys = toGameKeys(game.game_id)
+          keys.forEach((key) => {
+            if (!key) return
+            gameMap[key] = game
+          })
+        })
+        cachedGameDataMap = gameMap
+
         setPlayerStats(mergedPlayerStats)
         setPlayerStatsByName(statsByName)
         setTeamStats(teamData)
         setGameData(gamesData)
+        setGameDataMap(gameMap)
         setTeamIdMap(idToCodeMap)
         setError(null)
       } catch (err) {
@@ -154,7 +184,7 @@ export function useSportsData() {
     fetchData()
   }, [])
 
-  return { playerStats, playerStatsByName, teamStats, gameData, teamIdMap, loading, error }
+  return { playerStats, playerStatsByName, teamStats, gameData, gameDataMap, teamIdMap, loading, error }
 }
 
 // --- 🧠 PLAYER STATS HELPERS ---
@@ -202,7 +232,8 @@ export function getPlayerRecentGames(
   playerStats: PlayerStat[] | Record<string, PlayerStat[]>,
   playerName: string,
   teamIdMap: Record<number, string> = {},
-  limit = 10
+  limit = 10,
+  gameDataMap: Record<string, GameData> = {}
 ) {
   if (!playerStats || !playerName) return [];
 
@@ -227,7 +258,15 @@ export function getPlayerRecentGames(
     ? rawGames.sort((a, b) => (b.date ?? 0) - (a.date ?? 0))
     : rawGames;
 
-  const recentGames = sortedGames
+  const lookupGameMap = Object.keys(gameDataMap).length > 0 ? gameDataMap : cachedGameDataMap
+
+  // Filter out games with 0 minutes and then take the limit
+  const gamesWithMinutes = sortedGames.filter((g) => {
+    const minutes = typeof g.minutes === "string" ? Number.parseFloat(g.minutes.split(":")[0] || "0") : Number(g.minutes ?? 0);
+    return minutes > 0;
+  });
+
+  const recentGames = gamesWithMinutes
     .slice(0, normalizedLimit)
     .map((g) => {
       const minutes = typeof g.minutes === "string" ? Number.parseFloat(g.minutes.split(":")[0] || "0") : Number(g.minutes ?? 0);
@@ -238,13 +277,48 @@ export function getPlayerRecentGames(
       const ftm = Number(g.ftm ?? 0);
       const usageRaw = (g as any).usg ?? (g as any).usage_rate;
       const usage = usageRaw != null ? Number.parseFloat(String(usageRaw)) : undefined;
-      const gameResult = typeof (g as any).game_result === "string" ? (g as any).game_result.toUpperCase() : undefined;
+  const rawIsHome = (g as any).is_home ?? (g as any).isHome;
+  const hasHomeFlag = rawIsHome != null;
+  const isHome = hasHomeFlag ? Number(rawIsHome) === 1 : undefined;
 
-      return {
+      // Determine W/L by looking up the game and checking if player's team won
+      let wl: string | undefined
+      let gameInfo: GameData | undefined
+      const gameLookupKeys = toGameKeys(g.game_id)
+      for (const key of gameLookupKeys) {
+        const lookup = lookupGameMap[key]
+        if (lookup) {
+          gameInfo = lookup
+          break
+        }
+      }
+      if (gameInfo) {
+        const playerTeamId = g.team_id
+        const homeScore = Number(gameInfo.home_score ?? 0)
+        const awayScore = Number(gameInfo.away_score ?? 0)
+        const homeWon =
+          typeof gameInfo.home_win === "number"
+            ? gameInfo.home_win === 1
+            : homeScore > awayScore
+
+        if (gameInfo.home_team_id === playerTeamId) {
+          wl = homeWon ? "W" : "L"
+        } else if (gameInfo.away_team_id === playerTeamId) {
+          wl = homeWon ? "L" : "W"
+        }
+
+        if (!wl && Number.isFinite(homeScore) && Number.isFinite(awayScore)) {
+          const isHomePlayer = (g as any).is_home === 1
+          const inferredHomeWon = homeScore > awayScore
+          wl = isHomePlayer ? (inferredHomeWon ? "W" : "L") : inferredHomeWon ? "L" : "W"
+        }
+      }
+
+      const statLine: any = {
         date: new Date(g.date).toLocaleDateString("en-US", { month: "2-digit", day: "2-digit", year: "2-digit" }),
         opp: teamIdMap[g.opponent_id] || String(g.opponent_id) || "TBD",
         opponent: teamIdMap[g.opponent_id] || String(g.opponent_id) || "TBD",
-        wl: gameResult,
+        wl: wl,
         mins: Number.isFinite(minutes) ? minutes : 0,
         usg: Number.isFinite(usage ?? NaN) ? usage : undefined,
         pts: (fgm - fg3m) * 2 + fg3m * 3 + ftm,
@@ -259,6 +333,13 @@ export function getPlayerRecentGames(
         blk: Number(g.blocks ?? 0),
         tov: Number(g.turnovers ?? 0),
       };
+
+      if (isHome !== undefined) {
+        statLine.isHome = isHome;
+        statLine.venue = isHome ? "Home" : "Away";
+      }
+
+      return statLine;
     });
 
   return recentGames;
@@ -267,9 +348,10 @@ export function getPlayerRecentGames(
 export function getLast5Games(
   playerStats: any[],
   playerName: string,
-  teamIdMap: Record<number, string> = {}
+  teamIdMap: Record<number, string> = {},
+  gameDataMap: Record<string, GameData> = {}
 ) {
-  return getPlayerRecentGames(playerStats, playerName, teamIdMap, 5);
+  return getPlayerRecentGames(playerStats, playerName, teamIdMap, 5, gameDataMap);
 }
 
 /**

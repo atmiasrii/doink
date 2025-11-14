@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronDown, MoreHorizontal } from "lucide-react"
 import { TeamLogoPlaceholder } from "@/components/team-logo-placeholder"
 
@@ -24,6 +24,8 @@ interface StatLine {
   blk?: number
   tov?: number
   twoPtr?: string
+  isHome?: boolean
+  venue?: "Home" | "Away"
 }
 
 interface Averages {
@@ -44,6 +46,8 @@ interface Averages {
 type HitRateKey = "mins" | "usg" | "pts" | "fg" | "threePtr" | "reb" | "ast" | "stl" | "blk" | "tov"
 
 type HitRates = Record<HitRateKey, string>
+
+type VenueType = "Home" | "Away"
 
 interface BestLine {
   stat: string
@@ -234,11 +238,172 @@ const zeroAverages: Averages = {
   pra: 0,
 }
 
+function normalizeTeamKey(value: string): string {
+  return value
+    .replace(/[^A-Za-z0-9]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toUpperCase()
+}
+
+const TEAM_ID_TO_CODE: Record<string, string> = {
+  "1610612737": "ATL",
+  "1610612738": "BOS",
+  "1610612739": "CLE",
+  "1610612740": "NOP",
+  "1610612741": "CHI",
+  "1610612742": "DAL",
+  "1610612743": "DEN",
+  "1610612744": "GSW",
+  "1610612745": "HOU",
+  "1610612746": "LAC",
+  "1610612747": "LAL",
+  "1610612748": "MIA",
+  "1610612749": "MIL",
+  "1610612750": "MIN",
+  "1610612751": "BKN",
+  "1610612752": "NYK",
+  "1610612753": "ORL",
+  "1610612754": "IND",
+  "1610612755": "PHI",
+  "1610612756": "PHX",
+  "1610612757": "POR",
+  "1610612758": "SAC",
+  "1610612759": "SAS",
+  "1610612760": "OKC",
+  "1610612761": "TOR",
+  "1610612762": "UTA",
+  "1610612763": "MEM",
+  "1610612764": "WAS",
+  "1610612765": "DET",
+  "1610612766": "CHA",
+}
+
+const TEAM_ALIAS_MAP: Record<string, string> = (() => {
+  const entries: Array<{ code: string; aliases: string[] }> = [
+    { code: "ATL", aliases: ["ATLANTA HAWKS", "ATLANTA", "HAWKS"] },
+    { code: "BOS", aliases: ["BOSTON CELTICS", "BOSTON", "CELTICS", "CELTS"] },
+    { code: "BKN", aliases: ["BROOKLYN NETS", "BROOKLYN", "NETS", "BRK"] },
+    { code: "CHA", aliases: ["CHARLOTTE HORNETS", "CHARLOTTE", "HORNETS", "CHO"] },
+    { code: "CHI", aliases: ["CHICAGO BULLS", "CHICAGO", "BULLS"] },
+    { code: "CLE", aliases: ["CLEVELAND CAVALIERS", "CLEVELAND", "CAVALIERS", "CAVS"] },
+    { code: "DAL", aliases: ["DALLAS MAVERICKS", "DALLAS", "MAVERICKS", "MAVS"] },
+    { code: "DEN", aliases: ["DENVER NUGGETS", "DENVER", "NUGGETS", "NUGS"] },
+    { code: "DET", aliases: ["DETROIT PISTONS", "DETROIT", "PISTONS"] },
+    { code: "GSW", aliases: ["GOLDEN STATE WARRIORS", "GOLDEN STATE", "WARRIORS", "DUBS", "GS"] },
+    { code: "HOU", aliases: ["HOUSTON ROCKETS", "HOUSTON", "ROCKETS"] },
+    { code: "IND", aliases: ["INDIANA PACERS", "INDIANA", "PACERS"] },
+    { code: "LAC", aliases: ["LOS ANGELES CLIPPERS", "LA CLIPPERS", "CLIPPERS", "L A CLIPPERS"] },
+    { code: "LAL", aliases: ["LOS ANGELES LAKERS", "LA LAKERS", "LAKERS", "L A LAKERS"] },
+    { code: "MEM", aliases: ["MEMPHIS GRIZZLIES", "MEMPHIS", "GRIZZLIES", "GRIZZ", "GRIZ"] },
+    { code: "MIA", aliases: ["MIAMI HEAT", "MIAMI", "HEAT"] },
+    { code: "MIL", aliases: ["MILWAUKEE BUCKS", "MILWAUKEE", "BUCKS"] },
+    { code: "MIN", aliases: ["MINNESOTA TIMBERWOLVES", "MINNESOTA", "TIMBERWOLVES", "WOLVES", "T WOLVES"] },
+    { code: "NOP", aliases: ["NEW ORLEANS PELICANS", "NEW ORLEANS", "PELICANS", "PELS", "NOLA", "NO"] },
+    { code: "NYK", aliases: ["NEW YORK KNICKS", "NEW YORK", "KNICKS", "NY KNICKS", "NY"] },
+    { code: "OKC", aliases: ["OKLAHOMA CITY THUNDER", "OKLAHOMA CITY", "THUNDER"] },
+    { code: "ORL", aliases: ["ORLANDO MAGIC", "ORLANDO", "MAGIC"] },
+    { code: "PHI", aliases: ["PHILADELPHIA 76ERS", "PHILADELPHIA", "76ERS", "SIXERS", "PHILA", "PHILLY"] },
+    { code: "PHX", aliases: ["PHOENIX SUNS", "PHOENIX", "SUNS"] },
+    { code: "POR", aliases: ["PORTLAND TRAIL BLAZERS", "PORTLAND", "TRAIL BLAZERS", "BLAZERS"] },
+    { code: "SAC", aliases: ["SACRAMENTO KINGS", "SACRAMENTO", "KINGS"] },
+    { code: "SAS", aliases: ["SAN ANTONIO SPURS", "SAN ANTONIO", "SPURS", "SA SPURS", "SA"] },
+    { code: "TOR", aliases: ["TORONTO RAPTORS", "TORONTO", "RAPTORS", "RAPS"] },
+    { code: "UTA", aliases: ["UTAH JAZZ", "UTAH", "JAZZ"] },
+    { code: "WAS", aliases: ["WASHINGTON WIZARDS", "WASHINGTON", "WIZARDS", "WIZ"] },
+  ]
+
+  const map: Record<string, string> = {}
+
+  for (const { code, aliases } of entries) {
+    const normalizedCode = normalizeTeamKey(code)
+    if (normalizedCode) {
+      map[normalizedCode] = code
+    }
+
+    for (const alias of aliases) {
+      const normalizedAlias = normalizeTeamKey(alias)
+      if (!normalizedAlias) continue
+      if (!map[normalizedAlias]) {
+        map[normalizedAlias] = code
+      }
+    }
+  }
+
+  return map
+})()
+
+function resolveTeamCode(value?: string | number | null): string | null {
+  if (value == null) return null
+  const raw = String(value).trim()
+  if (!raw) return null
+
+  const digitsOnly = raw.replace(/\D/g, "")
+  if (digitsOnly && TEAM_ID_TO_CODE[digitsOnly]) {
+    return TEAM_ID_TO_CODE[digitsOnly]
+  }
+
+  const normalized = normalizeTeamKey(raw)
+  if (!normalized) return null
+
+  if (TEAM_ALIAS_MAP[normalized]) {
+    return TEAM_ALIAS_MAP[normalized]
+  }
+
+  if (/^[A-Z]{2,4}$/.test(normalized)) {
+    return normalized
+  }
+
+  return null
+}
+
+function normalizeVenue(value: unknown): VenueType | null {
+  if (value == null) return null
+  const normalized = String(value).trim().toLowerCase()
+  if (!normalized) return null
+  if (normalized === "home" || normalized === "h") return "Home"
+  if (normalized === "away" || normalized === "a") return "Away"
+  return null
+}
+
+function resolveStatVenue(stat: StatLine): VenueType | null {
+  if (typeof stat.isHome === "boolean") {
+    return stat.isHome ? "Home" : "Away"
+  }
+
+  const boolCandidate = (stat as any).isHome
+  if (typeof boolCandidate === "boolean") {
+    return boolCandidate ? "Home" : "Away"
+  }
+
+  const numericCandidate = (stat as any).is_home ?? (stat as any).home_flag ?? (stat as any).homeGame
+  if (numericCandidate !== undefined && numericCandidate !== null) {
+    const numericValue = Number(numericCandidate)
+    if (!Number.isNaN(numericValue)) {
+      if (numericValue === 1) return "Home"
+      if (numericValue === 0) return "Away"
+    }
+  }
+
+  const textualCandidates = [
+    (stat as any).venue,
+    (stat as any).location,
+    (stat as any).homeAway,
+    (stat as any).home_away,
+  ]
+
+  for (const candidate of textualCandidates) {
+    const normalizedVenue = normalizeVenue(candidate)
+    if (normalizedVenue) return normalizedVenue
+  }
+
+  return null
+}
+
 const STAT_COLUMN_KEYS: (string | null)[] = [
   null,
   null,
   "MINS",
-  "USG",
   "PTS",
   "FG",
   "3PT",
@@ -246,7 +411,6 @@ const STAT_COLUMN_KEYS: (string | null)[] = [
   "AST",
   "STL",
   "BLK",
-  "TOV",
 ]
 
 const SUPPORTED_BEST_LINE_COLUMNS = new Set(["MINS", "USG", "PTS", "FG", "3PT", "REB", "AST", "STL", "BLK", "TOV"])
@@ -508,21 +672,106 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
 }) => {
   const [selectedRange, setSelectedRange] = useState<"L5" | "L10" | "Season">("L10")
   const [expandedBestLine, setExpandedBestLine] = useState<string | null>(null)
+  const [opponentFilter, setOpponentFilter] = useState<string | null>(null)
+  const [venueFilter, setVenueFilter] = useState<VenueType | null>(null)
 
   const hasRealStats = Array.isArray(statLines) && statLines.length > 0
   const safeStatLines = hasRealStats ? statLines! : []
 
-  const rangeTarget = selectedRange === "Season" ? safeStatLines.length : selectedRange === "L10" ? 10 : 5
-  const normalizedRangeTarget = rangeTarget > 0 ? Math.min(rangeTarget, safeStatLines.length) : safeStatLines.length
-  const rangeStatLines = safeStatLines.slice(0, normalizedRangeTarget)
+  const opponentCode = useMemo(() => resolveTeamCode(opponent), [opponent])
+  const opponentLogoKey = opponentCode || opponent || ""
+  const opponentButtonIsActive = opponentCode != null && opponentFilter === opponentCode
 
-  const rowLimit = selectedRange === "L5" ? 5 : selectedRange === "L10" ? 10 : rangeStatLines.length
-  const tableStatLines = rangeStatLines.slice(0, rowLimit)
+  const handleOpponentFilterToggle = () => {
+    if (!opponentCode) return
+    setOpponentFilter((current) => (current === opponentCode ? null : opponentCode))
+  }
+
+  const venueTarget = useMemo(() => normalizeVenue(location), [location])
+  const hasVenueData = useMemo(() => safeStatLines.some((stat) => resolveStatVenue(stat) !== null), [safeStatLines])
+  const venueButtonIsActive = venueTarget != null && venueFilter === venueTarget
+  const locationButtonLabel = location || venueTarget || "Away"
+
+  const handleVenueFilterToggle = () => {
+    if (!venueTarget) return
+    setVenueFilter((current) => (current === venueTarget ? null : venueTarget))
+  }
+
+  const MAX_VISIBLE_ROWS = 10
+
+  // Filter by opponent if filter is active
+  const filteredStatLines = useMemo(() => {
+    if (!safeStatLines.length) return safeStatLines
+
+    let result = safeStatLines
+
+    if (opponentFilter) {
+      const normalizedFilter = normalizeTeamKey(opponentFilter)
+
+      result = result.filter((stat) => {
+        const possibleValues: Array<string | number | null | undefined> = [
+          stat.opponent,
+          stat.opp,
+          (stat as any).opponentId,
+          (stat as any).opponent_id,
+          (stat as any).opponentTeamId,
+          (stat as any).opponent_team_id,
+        ]
+
+        const candidates = new Set<string>()
+
+        for (const value of possibleValues) {
+          const code = resolveTeamCode(value)
+          if (code) {
+            candidates.add(code)
+          }
+        }
+
+        if (candidates.size > 0) {
+          return candidates.has(opponentFilter)
+        }
+
+        const fallbackNormalized = normalizeTeamKey(String(stat.opponent ?? stat.opp ?? ""))
+        return fallbackNormalized !== "" && fallbackNormalized === normalizedFilter
+      })
+    }
+
+    if (venueFilter) {
+      result = result.filter((stat) => {
+        const statVenue = resolveStatVenue(stat)
+        if (!statVenue) return false
+        return statVenue === venueFilter
+      })
+    }
+
+    return result
+  }, [safeStatLines, opponentFilter, venueFilter])
+
+  const rowsToRender = useMemo(() => {
+    if (!filteredStatLines.length) return []
+    if (selectedRange === "L5") return filteredStatLines.slice(0, 5).reverse()
+    if (selectedRange === "L10") return filteredStatLines.slice(0, MAX_VISIBLE_ROWS).reverse()
+    return [...filteredStatLines].reverse()
+  }, [filteredStatLines, selectedRange])
+
+  const isSeasonView = selectedRange === "Season"
+
+  const tableStatLines = isSeasonView ? rowsToRender : rowsToRender.slice(0, MAX_VISIBLE_ROWS)
+
+  const placeholderCount = selectedRange === "L5"
+    ? Math.max(0, MAX_VISIBLE_ROWS - tableStatLines.length)
+    : 0
+
   const tableContainerClasses = "overflow-x-auto"
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  const scrollContainerClasses = isSeasonView
+    ? "overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900"
+    : "overflow-y-hidden"
 
   const { averages: computedAverages, hitRates: computedHitRates } = useMemo(
-    () => computeRangeMetrics(rangeStatLines),
-    [rangeStatLines]
+    () => computeRangeMetrics(rowsToRender),
+    [rowsToRender]
   )
 
   const displayAverages = hasRealStats ? computedAverages : averages || zeroAverages
@@ -544,6 +793,29 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
       setExpandedBestLine(null)
     }
   }, [expandedBestLine, bestLineLookup])
+
+  useEffect(() => {
+    setOpponentFilter((current) => (current && current !== opponentCode ? null : current))
+  }, [opponentCode])
+
+  useEffect(() => {
+    setVenueFilter((current) => (current && current !== venueTarget ? null : current))
+  }, [venueTarget])
+
+  useEffect(() => {
+    if (!hasVenueData && venueFilter) {
+      setVenueFilter(null)
+    }
+  }, [hasVenueData, venueFilter])
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    requestAnimationFrame(() => {
+      container.scrollTop = 0
+    })
+  }, [selectedRange, safeStatLines.length, opponentFilter, venueFilter])
 
   const altLines = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5]
 
@@ -673,7 +945,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
         <div className="text-right text-xs text-slate-300">
           <div className="font-semibold text-white flex items-center justify-end gap-1.5">
             <span>vs</span>
-            <TeamLogoPlaceholder abbreviation={opponent} size="sm" />
+            <TeamLogoPlaceholder abbreviation={opponentLogoKey} size="sm" />
             <span>{opponent}</span>
           </div>
           <div className="text-slate-400">{location}</div>
@@ -700,14 +972,34 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
         </div>
 
         {/* Compact filter buttons */}
+        <button
+          type="button"
+          onClick={handleOpponentFilterToggle}
+          disabled={!opponentCode}
+          className={`px-2.5 py-1 border rounded text-xs font-semibold transition-colors flex items-center gap-1 ${
+            opponentButtonIsActive
+              ? "bg-blue-600 text-white border-blue-500"
+              : "bg-slate-800 text-white border-slate-700/50 hover:bg-slate-700"
+          } ${!opponentCode ? "opacity-50 cursor-not-allowed hover:bg-slate-800" : ""}`}
+        >
+          vs {opponent}
+          <ChevronDown size={12} />
+        </button>
+        <button
+          type="button"
+          onClick={handleVenueFilterToggle}
+          disabled={!venueTarget || !hasVenueData}
+          className={`px-2.5 py-1 border rounded text-xs font-semibold transition-colors flex items-center gap-1 ${
+            venueButtonIsActive
+              ? "bg-blue-600 text-white border-blue-500"
+              : "bg-slate-800 text-white border-slate-700/50 hover:bg-slate-700"
+          } ${!venueTarget || !hasVenueData ? "opacity-50 cursor-not-allowed hover:bg-slate-800" : ""}`}
+        >
+          {locationButtonLabel}
+          <ChevronDown size={12} />
+        </button>
         {[
-          { label: `vs ${opponent}`, icon: true },
-          { label: location, icon: true },
-          { label: "Full Game", icon: true },
-          { label: "Without Players", icon: true },
           { label: "Filter by minutes", icon: true },
-          { label: "Filter by FGA", icon: true },
-          { label: "More Filters +", icon: false },
         ].map((filter) => (
           <button
             key={filter.label}
@@ -722,55 +1014,82 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
       {/* Stats Table */}
       <div className="mb-3 pb-3 border-b border-slate-800/50">
         <div className={tableContainerClasses}>
+          {/* Table Header - Fixed */}
           <table className="w-full text-xs table-fixed">
-          <thead>
-            <tr className="border-b border-slate-800/50">
-              <th className="text-left px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[70px]">
-                Date
-              </th>
-              <th className="text-left px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs flex items-center gap-1 w-[50px]">
-                <TeamLogoPlaceholder abbreviation="OPP" size="sm" />
-                Opponent
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[45px]">
-                W/L
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[55px]">
-                Mins
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[55px]">
-                USG%
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[55px]">
-                PTS
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[65px]">
-                FG
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[55px]">
-                3PT
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[55px]">
-                REB
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[55px]">
-                AST
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[50px]">
-                STL
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[50px]">
-                BLK
-              </th>
-              <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs w-[50px]">
-                TOV
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+            <colgroup>
+              <col className="w-[70px]" />
+              <col className="w-[50px]" />
+              <col className="w-[45px]" />
+              <col className="w-[55px]" />
+              <col className="w-[55px]" />
+              <col className="w-[65px]" />
+              <col className="w-[55px]" />
+              <col className="w-[55px]" />
+              <col className="w-[50px]" />
+              <col className="w-[50px]" />
+            </colgroup>
+            <thead>
+              <tr className="border-b border-slate-800/50">
+                <th className="text-left px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  Date
+                </th>
+                <th className="text-left px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs flex items-center gap-1">
+                  <TeamLogoPlaceholder abbreviation="OPP" size="sm" />
+                  Opponent
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  W/L
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  Mins
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  PTS
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  FG
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  3PT
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  REB
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  AST
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  STL
+                </th>
+                <th className="text-center px-1.5 py-1.5 font-semibold text-slate-400 uppercase tracking-wide text-xs">
+                  BLK
+                </th>
+              </tr>
+            </thead>
+          </table>
+
+          {/* Scrollable Game Rows */}
+          <div
+            ref={scrollContainerRef}
+            className={`overflow-x-hidden ${scrollContainerClasses} max-h-[460px]`}
+          >
+            <table className="w-full text-xs table-fixed">
+              <colgroup>
+                <col className="w-[70px]" />
+                <col className="w-[50px]" />
+                <col className="w-[45px]" />
+                <col className="w-[55px]" />
+                <col className="w-[55px]" />
+                <col className="w-[65px]" />
+                <col className="w-[55px]" />
+                <col className="w-[55px]" />
+                <col className="w-[50px]" />
+                <col className="w-[50px]" />
+              </colgroup>
+              <tbody>
             {tableStatLines.length === 0 ? (
               <tr className="border-b border-slate-800/50">
-                <td colSpan={13} className="px-1.5 py-8 text-center text-slate-400 text-sm">
+                <td colSpan={11} className="px-1.5 py-8 text-center text-slate-400 text-sm">
                   No game data available for 2024-25 season
                 </td>
               </tr>
@@ -790,15 +1109,8 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
                         {stat.wl || "N/A"}
                       </span>
                     </td>
-                    <td
-                      className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.mins, displayAverages.mins || 0)}`}
-                    >
+                    <td className="px-1.5 py-1.5 text-center text-white font-semibold">
                       {stat.mins}
-                    </td>
-                    <td
-                      className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.usg || 0, displayAverages.usg || 0)}`}
-                    >
-                      {`${stat.usg ?? 0}%`}
                     </td>
                     <td
                       className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.pts, displayAverages.pts as number)}`}
@@ -835,64 +1147,65 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
                     >
                       {stat.blk || 0}
                     </td>
-                    <td
-                      className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.tov || 0, displayAverages.tov || 0)}`}
+                  </tr>
+                ))}
+                {placeholderCount > 0 &&
+                  Array.from({ length: placeholderCount }).map((_, idx) => (
+                    <tr
+                      key={`placeholder-${idx}`}
+                      className="border-b border-transparent opacity-0 pointer-events-none select-none"
                     >
-                      {stat.tov || 0}
-                    </td>
-                  </tr>
-                ))}
-                {/* Add empty placeholder rows when L5 is selected to maintain consistent card height */}
-                {selectedRange === "L5" && Array.from({ length: 5 }).map((_, idx) => (
-                  <tr key={`placeholder-${idx}`} className="border-b border-slate-800/50">
-                    <td className="px-1.5 py-1.5 text-xs">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-xs">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                    <td className="px-1.5 py-1.5 text-center">&nbsp;</td>
-                  </tr>
-                ))}
+                      <td colSpan={11} className="px-1.5 py-1.5">
+                        &nbsp;
+                      </td>
+                    </tr>
+                  ))}
               </>
             )}
-          </tbody>
-          <tfoot className="bg-slate-900/40">
-            <tr className="border-t border-slate-800/50">
-              <td className="px-1.5 py-1.5 text-slate-400 font-semibold uppercase text-xs">AVG</td>
-              <td className="px-1.5 py-1.5"></td>
-              <td className="px-1.5 py-1.5"></td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.mins || 0}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">
-                {displayAverages.usg != null ? `${displayAverages.usg}%` : "0%"}
-              </td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.pts}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.fg || "0/0"}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">
-                {displayAverages.threePtr || displayAverages.threePm || 0}
-              </td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.reb}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.ast}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.stl || 0}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.blk || 0}</td>
-              <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.tov || 0}</td>
-            </tr>
-            <tr className="border-t border-slate-800/50">
-              <td className="px-1.5 py-1.5 text-slate-400 font-semibold uppercase text-xs">HIT RA.</td>
-              {STAT_COLUMN_KEYS.map((columnKey, index) => renderHitRateCell(columnKey, index))}
-            </tr>
-            <tr className="border-t border-slate-800/50">
-              <td className="px-1.5 py-1.5 text-slate-400 font-semibold uppercase text-xs">BEST LINES</td>
-              {STAT_COLUMN_KEYS.map((columnKey, index) => renderBestLineCell(columnKey, index))}
-            </tr>
-          </tfoot>
-        </table>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Fixed Footer - Averages, Hit Rates, Best Lines */}
+          <table className="w-full text-xs table-fixed">
+            <colgroup>
+              <col className="w-[70px]" />
+              <col className="w-[50px]" />
+              <col className="w-[45px]" />
+              <col className="w-[55px]" />
+              <col className="w-[55px]" />
+              <col className="w-[65px]" />
+              <col className="w-[55px]" />
+              <col className="w-[55px]" />
+              <col className="w-[50px]" />
+              <col className="w-[50px]" />
+            </colgroup>
+            <tfoot className="bg-slate-900/40">
+              <tr className="border-t border-slate-800/50">
+                <td className="px-1.5 py-1.5 text-slate-400 font-semibold uppercase text-xs">AVG</td>
+                <td className="px-1.5 py-1.5"></td>
+                <td className="px-1.5 py-1.5"></td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.mins || 0}</td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.pts}</td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.fg || "0/0"}</td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">
+                  {displayAverages.threePtr || displayAverages.threePm || 0}
+                </td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.reb}</td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.ast}</td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.stl || 0}</td>
+                <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.blk || 0}</td>
+              </tr>
+              <tr className="border-t border-slate-800/50">
+                <td className="px-1.5 py-1.5 text-slate-400 font-semibold uppercase text-xs">HIT RA.</td>
+                {STAT_COLUMN_KEYS.map((columnKey, index) => renderHitRateCell(columnKey, index))}
+              </tr>
+              <tr className="border-t border-slate-800/50">
+                <td className="px-1.5 py-1.5 text-slate-400 font-semibold uppercase text-xs">BEST LINES</td>
+                {STAT_COLUMN_KEYS.map((columnKey, index) => renderBestLineCell(columnKey, index))}
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
 

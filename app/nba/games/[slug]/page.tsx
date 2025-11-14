@@ -31,7 +31,7 @@ export default function GamePage() {
   const { slug } = params;
 
   const { home, away } = useMemo(() => parseSlug(slug), [slug]);
-  const { gameData, playerStatsByName, teamIdMap, loading: dataLoading } = useSportsData();
+  const { gameData, playerStatsByName, gameDataMap, teamIdMap, loading: dataLoading } = useSportsData();
   const { rosters, loading: rosterLoading } = useTeamRostersById();
 
   const isDataLoaded = !dataLoading && !rosterLoading;
@@ -90,13 +90,14 @@ export default function GamePage() {
 
   const mapRosterToPlayers = useMemo(() => {
     if (!teamIdMap || Object.keys(teamIdMap).length === 0) return () => [];
-    
+
     return (players: any[], teamCode: string) =>
       (players || []).map((p, index) => {
         const playerName = p.player_name || `Player-${index}`;
-        const recentGames = getPlayerRecentGames(playerStatsByName, playerName, teamIdMap, 10);
-        const last5 = recentGames.slice(0, 5);
-        const averageSample = last5.length > 0 ? last5 : recentGames;
+        const seasonGames = getPlayerRecentGames(playerStatsByName, playerName, teamIdMap, 200, gameDataMap);
+        const recentGames = seasonGames.slice(0, 10);
+        const last5 = seasonGames.slice(0, 5);
+        const averageSample = last5.length > 0 ? last5 : seasonGames;
         const averages = getPlayerAverages(averageSample);
 
         return {
@@ -107,6 +108,7 @@ export default function GamePage() {
           statsAvg: averages,
           recentGames,
           last5Games: last5,
+          seasonGames,
           currentLines: {
             pts: averages.pts,
             reb: averages.reb,
@@ -114,9 +116,7 @@ export default function GamePage() {
           },
         };
       });
-  }, [playerStatsByName, teamIdMap]);
-
-  const displayGameData = useMemo(() => {
+  }, [playerStatsByName, teamIdMap, gameDataMap]);  const displayGameData = useMemo(() => {
     if (!game || !homeRoster || !awayRoster) return null;
     
     const defaultRecord = { wins: 0, losses: 0 };

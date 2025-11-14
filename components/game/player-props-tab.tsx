@@ -38,6 +38,7 @@ interface Player {
   }
   last5Games?: any[]
   recentGames?: any[]
+  seasonGames?: any[]
 }
 
 interface GameData {
@@ -125,7 +126,7 @@ export function PlayerPropsTab({ game }: PlayerPropsTabProps) {
                 teamName={game.teamA.name}
                 position={player.pos}
                 opponent={game.teamB.name}
-                statLines={player.recentGames ?? player.last5Games}
+                statLines={player.seasonGames ?? player.recentGames ?? player.last5Games}
                 averages={player.statsAvg}
                 location="Away"
                 status="Expected"
@@ -145,7 +146,7 @@ export function PlayerPropsTab({ game }: PlayerPropsTabProps) {
                 teamName={game.teamB.name}
                 position={player.pos}
                 opponent={game.teamA.name}
-                statLines={player.recentGames ?? player.last5Games}
+                statLines={player.seasonGames ?? player.recentGames ?? player.last5Games}
                 averages={player.statsAvg}
                 location="Home"
                 status="Expected"
