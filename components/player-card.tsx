@@ -220,6 +220,12 @@ const defaultBestLines: BestLine[] = [
   { stat: "ALT", line: 0.5, price: 235 },
 ]
 
+const RANGE_OPTIONS: Array<{ value: "L5" | "L10" | "Season"; label: string }> = [
+  { value: "L5", label: "L5" },
+  { value: "L10", label: "L10" },
+  { value: "Season", label: "L Season" },
+]
+
 // Zero stats for players with no historical data (rookies, etc.)
 const zeroStatLines: StatLine[] = []
 
@@ -678,6 +684,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
   const hasRealStats = Array.isArray(statLines) && statLines.length > 0
   const safeStatLines = hasRealStats ? statLines! : []
 
+  const teamLogoKey = useMemo(() => resolveTeamCode(teamName) || teamName || "", [teamName])
   const opponentCode = useMemo(() => resolveTeamCode(opponent), [opponent])
   const opponentLogoKey = opponentCode || opponent || ""
   const opponentButtonIsActive = opponentCode != null && opponentFilter === opponentCode
@@ -820,7 +827,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
   const altLines = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5]
 
   const renderHitRateCell = (columnKey: string | null, index: number) => {
-    if (!columnKey) {
+    if (!columnKey || columnKey === "MINS") {
       return <td key={`hit-${index}`} className="px-1.5 py-1.5"></td>
     }
 
@@ -854,7 +861,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
   }
 
   const renderBestLineCell = (columnKey: string | null, index: number) => {
-    if (!columnKey) {
+    if (!columnKey || columnKey === "MINS") {
       return <td key={`best-${index}`} className="px-1.5 py-1.5"></td>
     }
 
@@ -921,9 +928,11 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
               alt={playerName}
               className="w-10 h-10 rounded-full object-cover bg-slate-800"
             />
-            <div className="absolute -bottom-0.5 -right-0.5 bg-slate-950 border border-slate-700 rounded-full px-1 py-0 text-xs font-semibold text-white">
-              {teamName}
-            </div>
+            {teamLogoKey ? (
+              <div className="absolute -bottom-0.5 -right-0.5 bg-slate-950 border border-slate-700 rounded-full p-0.5 flex items-center justify-center">
+                <TeamLogoPlaceholder abbreviation={teamLogoKey} size="sm" />
+              </div>
+            ) : null}
           </div>
           {/* Player info */}
           <div className="flex flex-col gap-1">
@@ -956,19 +965,22 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
       <div className="flex flex-wrap gap-2 mb-4 pb-4 border-b border-slate-800/50">
         {/* Range selector */}
         <div className="flex items-center gap-1">
-          {(["L5", "L10", "Season"] as const).map((range) => (
+          {RANGE_OPTIONS.map(({ value, label }) => (
             <button
-              key={range}
-              onClick={() => setSelectedRange(range)}
+              key={value}
+              onClick={() => setSelectedRange(value)}
               className={`px-2.5 py-1 rounded text-xs font-semibold transition-colors ${
-                selectedRange === range
+                selectedRange === value
                   ? "bg-blue-600 text-white border border-blue-500"
                   : "bg-slate-800 text-slate-300 border border-slate-700/50 hover:bg-slate-700"
               }`}
             >
-              {range}
+              {label}
             </button>
           ))}
+          <button className="px-2.5 py-1 rounded text-xs font-semibold bg-slate-900/60 text-slate-400 border border-slate-700/50">
+            Season
+          </button>
         </div>
 
         {/* Compact filter buttons */}
@@ -1027,6 +1039,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
               <col className="w-[55px]" />
               <col className="w-[50px]" />
               <col className="w-[50px]" />
+              <col className="w-[50px]" />
             </colgroup>
             <thead>
               <tr className="border-b border-slate-800/50">
@@ -1083,6 +1096,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
                 <col className="w-[65px]" />
                 <col className="w-[55px]" />
                 <col className="w-[55px]" />
+                <col className="w-[50px]" />
                 <col className="w-[50px]" />
                 <col className="w-[50px]" />
               </colgroup>
@@ -1177,6 +1191,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
               <col className="w-[65px]" />
               <col className="w-[55px]" />
               <col className="w-[55px]" />
+              <col className="w-[50px]" />
               <col className="w-[50px]" />
               <col className="w-[50px]" />
             </colgroup>

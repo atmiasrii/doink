@@ -118,7 +118,6 @@ const initialGames: SidebarGame[] = [
 const filters = ["All", "Upcoming", "Final"] as const
 
 const tools = [
-  { href: "/hit-rater", label: "Hit Rater", icon: BarChart3 },
   { href: "/trending-insights", label: "Trending Insights", icon: TrendingUp },
   { href: "/my-bets", label: "My Bets", icon: Settings },
 ]
@@ -207,14 +206,14 @@ export function AppSidebar() {
 
       <aside
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen bg-slate-950/95 backdrop-blur-sm transition-transform duration-300 ease-out border-r border-slate-800/80",
+          "fixed left-0 top-0 z-40 h-screen bg-slate-950/95 backdrop-blur-sm transition-transform duration-300 ease-out border-r border-slate-800/80 flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-slate-800/80 scrollbar-track-transparent",
           sidebarWidth,
           collapsed ? "px-0" : "px-0",
           isOpen ? "translate-x-0" : "-translate-x-full",
           "md:translate-x-0"
         )}
       >
-        <div className="flex h-full flex-col overflow-hidden">
+        <div className="flex h-full flex-col">
           <div className="flex h-12 items-center border-b border-slate-800/80 px-3">
             <Link href="/" className="flex items-center gap-2 text-slate-50">
               <span className="text-lg font-black tracking-tight">{collapsed ? "D" : "DOINK"}</span>
@@ -276,24 +275,25 @@ export function AppSidebar() {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className={cn("flex gap-2", collapsed && "flex-col gap-2")}
+              >
                 <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
                   <DialogTrigger asChild>
                     <button
                       type="button"
                       className={cn(
-                        "flex h-9 w-full items-center gap-3 rounded-md border border-emerald-600/50 bg-emerald-900/20 px-3 text-sm font-semibold text-emerald-300 transition-colors",
+                        "flex h-9 w-full flex-1 items-center gap-3 rounded-md border border-emerald-600/50 bg-emerald-900/20 px-3 text-sm font-semibold text-emerald-300 transition-colors",
                         "hover:border-emerald-500 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-500",
                         collapsed && "justify-center px-0"
                       )}
                     >
                       <Plus className="h-4 w-4" />
-                      {!collapsed && <span>Add Game</span>}
+                      {!collapsed && <span>Add</span>}
                     </button>
                   </DialogTrigger>
                   <DialogContent className="bg-slate-900 border border-slate-800">
                     <DialogHeader>
-                      <DialogTitle className="text-slate-50">Add Game</DialogTitle>
+                      <DialogTitle className="text-slate-50">Add</DialogTitle>
                       <DialogDescription className="text-slate-400">
                         Provide three-letter team codes to stage a matchup.
                       </DialogDescription>
@@ -339,7 +339,7 @@ export function AppSidebar() {
                         className="flex h-9 items-center justify-center rounded-md bg-emerald-600 px-4 text-sm font-semibold text-slate-50 transition hover:bg-emerald-500"
                         onClick={handleAddGame}
                       >
-                        Add Game
+                        Add
                       </button>
                     </DialogFooter>
                   </DialogContent>
@@ -350,18 +350,18 @@ export function AppSidebar() {
                     <button
                       type="button"
                       className={cn(
-                        "flex h-9 w-full items-center gap-3 rounded-md border border-red-600/40 bg-red-900/20 px-3 text-sm font-semibold text-red-300 transition-colors",
+                        "flex h-9 w-full flex-1 items-center gap-3 rounded-md border border-red-600/40 bg-red-900/20 px-3 text-sm font-semibold text-red-300 transition-colors",
                         "hover:border-red-500 hover:text-red-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-500",
                         collapsed && "justify-center px-0"
                       )}
                     >
                       <Trash2 className="h-4 w-4" />
-                      {!collapsed && <span>Remove Game</span>}
+                      {!collapsed && <span>Remove</span>}
                     </button>
                   </DialogTrigger>
                   <DialogContent className="bg-slate-900 border border-slate-800">
                     <DialogHeader>
-                      <DialogTitle className="text-slate-50">Remove Game</DialogTitle>
+                      <DialogTitle className="text-slate-50">Remove</DialogTitle>
                       <DialogDescription className="text-slate-400">
                         Choose a matchup to delete from the board.
                       </DialogDescription>
@@ -403,7 +403,7 @@ export function AppSidebar() {
                         disabled={selectedGameId === null}
                         onClick={handleRemoveGame}
                       >
-                        Remove Game
+                        Remove
                       </button>
                     </DialogFooter>
                   </DialogContent>
@@ -412,7 +412,8 @@ export function AppSidebar() {
 
               <div>
                 <div className={cn("px-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500")}>Filters</div>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className={cn("mt-2 flex gap-2", collapsed && "gap-1")}
+                >
                   {filters.map((filter) => {
                     const isActive = activeFilter === filter
                     return (
@@ -421,7 +422,7 @@ export function AppSidebar() {
                         type="button"
                         onClick={() => setActiveFilter(filter)}
                         className={cn(
-                          "flex h-7 min-w-[72px] items-center justify-center rounded-full border px-3 text-xs font-semibold uppercase tracking-wide transition",
+                          "flex h-7 min-w-[72px] flex-1 items-center justify-center rounded-full border px-3 text-xs font-semibold uppercase tracking-wide transition",
                           isActive
                             ? "border-slate-600 bg-slate-800 text-slate-100"
                             : "border-transparent bg-slate-900/60 text-slate-400 hover:bg-slate-800/60",

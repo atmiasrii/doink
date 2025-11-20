@@ -1,6 +1,7 @@
 "use client"
 
 import { PlayerCard } from "@/components/player-card"
+import { PlayerCard2 } from "@/components/player-card2"
 
 interface Player {
   id: string
@@ -62,19 +63,30 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">{game.teamA.name} Bench</h3>
           <div className="space-y-4">
-            {teamABench.map((player) => (
-              <PlayerCard
-                key={player.id}
-                playerName={player.name}
-                teamName={game.teamA.name}
-                position={player.pos}
-                opponent={game.teamB.name}
-                statLines={player.seasonGames ?? player.recentGames ?? player.last5Games}
-                averages={player.statsAvg}
-                location="Away"
-                status="Expected"
-              />
-            ))}
+            {teamABench.map((player) => {
+              const statLines = player.seasonGames ?? player.recentGames ?? player.last5Games
+
+              return (
+                <div
+                  key={`${player.id}-bench-away`}
+                  className="grid gap-4 md:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[minmax(0,1fr)_320px]"
+                >
+                  <PlayerCard
+                    playerName={player.name}
+                    teamName={game.teamA.name}
+                    position={player.pos}
+                    opponent={game.teamB.name}
+                    statLines={statLines}
+                    averages={player.statsAvg}
+                    location="Away"
+                    status="Expected"
+                  />
+                  <div className="md:justify-self-end">
+                    <PlayerCard2 playerName={player.name} />
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -82,19 +94,30 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">{game.teamB.name} Bench</h3>
           <div className="space-y-4">
-            {teamBBench.map((player) => (
-              <PlayerCard
-                key={player.id}
-                playerName={player.name}
-                teamName={game.teamB.name}
-                position={player.pos}
-                opponent={game.teamA.name}
-                statLines={player.seasonGames ?? player.recentGames ?? player.last5Games}
-                averages={player.statsAvg}
-                location="Home"
-                status="Expected"
-              />
-            ))}
+            {teamBBench.map((player) => {
+              const statLines = player.seasonGames ?? player.recentGames ?? player.last5Games
+
+              return (
+                <div
+                  key={`${player.id}-bench-home`}
+                  className="grid gap-4 md:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[minmax(0,1fr)_320px]"
+                >
+                  <PlayerCard
+                    playerName={player.name}
+                    teamName={game.teamB.name}
+                    position={player.pos}
+                    opponent={game.teamA.name}
+                    statLines={statLines}
+                    averages={player.statsAvg}
+                    location="Home"
+                    status="Expected"
+                  />
+                  <div className="md:justify-self-end">
+                    <PlayerCard2 playerName={player.name} />
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

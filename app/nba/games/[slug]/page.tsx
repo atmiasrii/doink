@@ -5,7 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import { PageContainer } from "@/components/layout/page-container";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { GameHeaderCard } from "@/components/game/game-header-card";
 import { MatchupFactors } from "@/components/game/matchup-factors";
 import { LineupTable } from "@/components/game/lineup-table";
 import { PlayerPropsTab } from "@/components/game/player-props-tab";
@@ -13,6 +12,7 @@ import { BenchPropsTab } from "@/components/game/bench-props-tab";
 import { TeamPropsTab } from "@/components/game/team-props-tab";
 import { useSportsData, getPlayerRecentGames, getPlayerAverages } from "@/hooks/use-sports-data";
 import useTeamRostersById from "@/hooks/use-team-rosters-by-id";
+import { TeamLogoPlaceholder } from "@/components/team-logo-placeholder";
 
 function parseSlug(slug: string) {
   const parts = slug.split("-");
@@ -242,21 +242,57 @@ export default function GamePage() {
   return (
     <PageContainer>
       <div className="space-y-6">
-        {/* Header */}
-        <div className="flex items-center gap-2 text-sm text-slate-400">
-          <span>NBA</span>
-          <span>›</span>
-          <span>
-            {home.toUpperCase()} vs {away.toUpperCase()}
-          </span>
-        </div>
-
-        {/* Game Title */}
-        <div>
-          <h1 className="text-4xl font-bold text-white mb-2">
-            {home.toUpperCase()} vs {away.toUpperCase()}
-          </h1>
-          <p className="text-slate-400">TODAY 4:30AM</p>
+        {/* Game Title / Matchup Card */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl rounded-3xl border border-slate-800/70 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-slate-950/90 p-6 shadow-[0_12px_45px_rgba(0,0,0,0.55)]">
+            <div className="flex flex-wrap items-center justify-between text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-400">
+              <span>{displayGameData?.date ?? "Today"}</span>
+              <span className="text-white tracking-[0.25em]">NBA</span>
+              <span>{displayGameData?.time ?? "TBD"}</span>
+            </div>
+            <div className="mt-6 grid gap-6 sm:grid-cols-[1fr_auto_1fr] items-center">
+              <div className="flex flex-col items-center gap-3 text-center">
+                <div className="flex items-center justify-center p-2">
+                  <TeamLogoPlaceholder
+                    abbreviation={displayGameData?.teamA?.tricode || home.toUpperCase()}
+                    size="xxl"
+                    variant="plain"
+                  />
+                </div>
+                <div>
+                  <p className="text-white text-xl font-bold">{displayGameData?.teamA?.tricode || home.toUpperCase()}</p>
+                  <p className="text-xs uppercase tracking-wide text-slate-400">{displayGameData?.teamA?.name || "Home Team"}</p>
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.5em] text-slate-500">Matchup</p>
+                <p className="mt-3 text-4xl font-black text-white">
+                  {home.toUpperCase()} <span className="text-emerald-400">vs</span> {away.toUpperCase()}
+                </p>
+                <p className="mt-2 text-sm text-slate-300">
+                  {(displayGameData?.date ?? "Today")} · {(displayGameData?.time ?? "TBD")}
+                </p>
+                <p className="text-xs text-slate-500">
+                  {(displayGameData?.venue?.name && displayGameData?.venue?.city)
+                    ? `${displayGameData.venue.name} · ${displayGameData.venue.city}`
+                    : "Venue TBA"}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-3 text-center">
+                <div className="flex items-center justify-center p-2">
+                  <TeamLogoPlaceholder
+                    abbreviation={displayGameData?.teamB?.tricode || away.toUpperCase()}
+                    size="xxl"
+                    variant="plain"
+                  />
+                </div>
+                <div>
+                  <p className="text-white text-xl font-bold">{displayGameData?.teamB?.tricode || away.toUpperCase()}</p>
+                  <p className="text-xs uppercase tracking-wide text-slate-400">{displayGameData?.teamB?.name || "Away Team"}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Tabs */}
@@ -265,14 +301,11 @@ export default function GamePage() {
             <TabsTrigger value="overview">Game Overview</TabsTrigger>
             <TabsTrigger value="player-props">Player Props</TabsTrigger>
             <TabsTrigger value="bench-props">Bench Props</TabsTrigger>
-            <TabsTrigger value="over-under">Over / Under</TabsTrigger>
             <TabsTrigger value="team-props">Team Props</TabsTrigger>
-            <TabsTrigger value="sides">Sides</TabsTrigger>
             <TabsTrigger value="my-bets">My Bets</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6 mt-6">
-            <GameHeaderCard game={displayGameData as any} />
             <MatchupFactors game={displayGameData as any} />
             <LineupTable game={displayGameData as any} />
           </TabsContent>
@@ -285,20 +318,8 @@ export default function GamePage() {
             <BenchPropsTab game={displayGameData as any} />
           </TabsContent>
 
-          <TabsContent value="over-under" className="mt-6">
-            <Card className="p-6 bg-slate-800/30 border-slate-700/50">
-              <p className="text-white">Over/Under view coming soon</p>
-            </Card>
-          </TabsContent>
-
           <TabsContent value="team-props" className="mt-6">
             <TeamPropsTab />
-          </TabsContent>
-
-          <TabsContent value="sides" className="mt-6">
-            <Card className="p-6 bg-slate-800/30 border-slate-700/50">
-              <p className="text-white">Sides view coming soon</p>
-            </Card>
           </TabsContent>
 
           <TabsContent value="my-bets" className="mt-6">
