@@ -187,6 +187,123 @@ export function useSportsData() {
   return { playerStats, playerStatsByName, teamStats, gameData, gameDataMap, teamIdMap, loading, error }
 }
 
+let cachedGameDataMap2025: Record<string, GameData> = {}
+
+export function useSportsData2025() {
+  const [playerStats, setPlayerStats] = useState<PlayerStat[]>([])
+  const [playerStatsByName, setPlayerStatsByName] = useState<Record<string, PlayerStat[]>>({})
+  const [teamStats, setTeamStats] = useState<TeamStat[]>([])
+  const [gameData, setGameData] = useState<GameData[]>([])
+  const [gameDataMap, setGameDataMap] = useState<Record<string, GameData>>({})
+  const [teamIdMap, setTeamIdMap] = useState<Record<number, string>>({})
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true)
+
+        const [playerRes, teamRes, gamesRes] = await Promise.all([
+          fetch("/data/S25/player_game_stats_2025-26.json"),
+          fetch("/data/S25/team_game_stats_2025-26.json"),
+          fetch("/data/S25/games_2025-26.json"),
+        ])
+
+        if (!playerRes.ok || !teamRes.ok || !gamesRes.ok) {
+          throw new Error("Failed to fetch one or more 2025-26 data files")
+        }
+
+        const playerData = await playerRes.json()
+        const teamData = await teamRes.json()
+        const gamesData = await gamesRes.json()
+
+        const statsByName: Record<string, PlayerStat[]> = {}
+
+        for (const stat of playerData) {
+          const key = normalizePlayerName(stat.player_name || "")
+          if (!key) continue
+          if (!statsByName[key]) {
+            statsByName[key] = []
+          }
+          statsByName[key].push(stat)
+        }
+
+        Object.values(statsByName).forEach((entries) => {
+          entries.sort((a, b) => (b.date ?? 0) - (a.date ?? 0))
+        })
+
+        // Build game data map by game_id for fast lookups
+        const gameMap: Record<string, GameData> = {}
+        gamesData.forEach((game: GameData) => {
+          const keys = toGameKeys(game.game_id)
+          keys.forEach((key) => {
+            if (!key) return
+            gameMap[key] = game
+          })
+        })
+        cachedGameDataMap2025 = gameMap
+
+        // Build team ID to code map using standard NBA mapping
+        const TEAM_ID_TO_CODE: Record<string, string> = {
+          "1610612737": "ATL",
+          "1610612738": "BOS",
+          "1610612739": "CLE",
+          "1610612740": "NOP",
+          "1610612741": "CHI",
+          "1610612742": "DAL",
+          "1610612743": "DEN",
+          "1610612744": "GSW",
+          "1610612745": "HOU",
+          "1610612746": "LAC",
+          "1610612747": "LAL",
+          "1610612748": "MIA",
+          "1610612749": "MIL",
+          "1610612750": "MIN",
+          "1610612751": "BKN",
+          "1610612752": "NYK",
+          "1610612753": "ORL",
+          "1610612754": "IND",
+          "1610612755": "PHI",
+          "1610612756": "PHX",
+          "1610612757": "POR",
+          "1610612758": "SAC",
+          "1610612759": "SAS",
+          "1610612760": "OKC",
+          "1610612761": "TOR",
+          "1610612762": "UTA",
+          "1610612763": "MEM",
+          "1610612764": "WAS",
+          "1610612765": "DET",
+          "1610612766": "CHA",
+        }
+        
+        const idToCodeMap: Record<number, string> = {}
+        Object.entries(TEAM_ID_TO_CODE).forEach(([id, code]) => {
+          idToCodeMap[Number(id)] = code
+        })
+
+        setPlayerStats(playerData)
+        setPlayerStatsByName(statsByName)
+        setTeamStats(teamData)
+        setGameData(gamesData)
+        setGameDataMap(gameMap)
+        setTeamIdMap(idToCodeMap)
+        setError(null)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Unknown error")
+        console.error("Data fetch error (2025-26):", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  return { playerStats, playerStatsByName, teamStats, gameData, gameDataMap, teamIdMap, loading, error }
+}
+
 // --- 🧠 PLAYER STATS HELPERS ---
 
 /**
@@ -327,6 +444,7 @@ export function getPlayerRecentGames(
         fga,
         threePtr: `${fg3m}/${fg3a}`,
         threePm: fg3m,
+        threePa: fg3a,
         reb: Number(g.rebounds ?? 0),
         ast: Number(g.assists ?? 0),
         stl: Number(g.steals ?? 0),

@@ -18,6 +18,7 @@ interface StatLine {
   fga?: number
   threePtr?: string
   threePm?: number
+  threePa?: number
   reb: number
   ast: number
   stl?: number
@@ -64,8 +65,11 @@ interface PlayerCardProps {
   location?: string
   status?: string
   statLines?: StatLine[]
+  statLines2025?: StatLine[]
   averages?: Averages
+  averages2025?: Averages
   hitRates?: HitRates
+  hitRates2025?: HitRates
   bestLines?: BestLine[]
 }
 
@@ -220,10 +224,11 @@ const defaultBestLines: BestLine[] = [
   { stat: "ALT", line: 0.5, price: 235 },
 ]
 
-const RANGE_OPTIONS: Array<{ value: "L5" | "L10" | "Season"; label: string }> = [
+const RANGE_OPTIONS: Array<{ value: "L5" | "L10" | "LSeason" | "Season"; label: string }> = [
   { value: "L5", label: "L5" },
   { value: "L10", label: "L10" },
-  { value: "Season", label: "L Season" },
+  { value: "LSeason", label: "LSeason" },
+  { value: "Season", label: "Season" },
 ]
 
 // Zero stats for players with no historical data (rookies, etc.)
@@ -480,7 +485,8 @@ const extractFgShots = (stat: StatLine): { made: number; attempts: number } => {
 const extractThreeShots = (stat: StatLine): { made: number; attempts: number } => {
   const parsed = parseShotString(stat.threePtr)
   const made = stat.threePm ?? parsed.made
-  return { made: made ?? 0, attempts: parsed.attempts }
+  const attempts = stat.threePa ?? parsed.attempts
+  return { made: made ?? 0, attempts: attempts ?? 0 }
 }
 
 const formatShotAverage = (madePerGame: number, attemptsPerGame: number): string => {
@@ -672,17 +678,34 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
   location = "Away",
   status = "Expected",
   statLines,
+  statLines2025,
   averages,
+  averages2025,
   hitRates = defaultHitRates,
+  hitRates2025,
   bestLines = defaultBestLines,
 }) => {
-  const [selectedRange, setSelectedRange] = useState<"L5" | "L10" | "Season">("L10")
+  const [selectedRange, setSelectedRange] = useState<"L5" | "L10" | "LSeason" | "Season">("L10")
   const [expandedBestLine, setExpandedBestLine] = useState<string | null>(null)
   const [opponentFilter, setOpponentFilter] = useState<string | null>(null)
   const [venueFilter, setVenueFilter] = useState<VenueType | null>(null)
 
-  const hasRealStats = Array.isArray(statLines) && statLines.length > 0
-  const safeStatLines = hasRealStats ? statLines! : []
+  // Determine which data source to use based on selected range
+  const activeStatLines = useMemo(() => {
+    if (selectedRange === "Season") return statLines2025
+    if (selectedRange === "LSeason") return statLines
+
+    // For L5 and L10, combine both seasons (2025 first as it's newer)
+    const s25 = statLines2025 || []
+    const s24 = statLines || []
+    return [...s25, ...s24]
+  }, [selectedRange, statLines, statLines2025])
+
+  const activeAverages = selectedRange === "Season" ? averages2025 : averages
+  const activeHitRates = selectedRange === "Season" ? (hitRates2025 || defaultHitRates) : (hitRates || defaultHitRates)
+
+  const hasRealStats = Array.isArray(activeStatLines) && activeStatLines.length > 0
+  const safeStatLines = hasRealStats ? activeStatLines! : []
 
   const teamLogoKey = useMemo(() => resolveTeamCode(teamName) || teamName || "", [teamName])
   const opponentCode = useMemo(() => resolveTeamCode(opponent), [opponent])
@@ -758,10 +781,11 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
     if (!filteredStatLines.length) return []
     if (selectedRange === "L5") return filteredStatLines.slice(0, 5).reverse()
     if (selectedRange === "L10") return filteredStatLines.slice(0, MAX_VISIBLE_ROWS).reverse()
+    // Both LSeason and Season show all games
     return [...filteredStatLines].reverse()
   }, [filteredStatLines, selectedRange])
 
-  const isSeasonView = selectedRange === "Season"
+  const isSeasonView = selectedRange === "LSeason" || selectedRange === "Season"
 
   const tableStatLines = isSeasonView ? rowsToRender : rowsToRender.slice(0, MAX_VISIBLE_ROWS)
 
@@ -781,8 +805,8 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
     [rowsToRender]
   )
 
-  const displayAverages = hasRealStats ? computedAverages : averages || zeroAverages
-  const displayHitRates = hasRealStats ? computedHitRates : hitRates || zeroHitRates
+  const displayAverages = hasRealStats ? computedAverages : activeAverages || zeroAverages
+  const displayHitRates = hasRealStats ? computedHitRates : activeHitRates || zeroHitRates
 
   const bestLineLookup = useMemo(() => {
     const lookup: Record<string, BestLine> = {}
@@ -922,17 +946,18 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start gap-3">
           {/* Avatar and badges */}
-          <div className="relative">
-            <img
-              src={avatarUrl || "/placeholder.svg"}
-              alt={playerName}
-              className="w-10 h-10 rounded-full object-cover bg-slate-800"
-            />
+          <div className="relative w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center overflow-hidden">
             {teamLogoKey ? (
-              <div className="absolute -bottom-0.5 -right-0.5 bg-slate-950 border border-slate-700 rounded-full p-0.5 flex items-center justify-center">
-                <TeamLogoPlaceholder abbreviation={teamLogoKey} size="sm" />
+              <div className="w-full h-full flex items-center justify-center scale-150">
+                <TeamLogoPlaceholder abbreviation={teamLogoKey} size="md" />
               </div>
-            ) : null}
+            ) : (
+              <img
+                src={avatarUrl || "/placeholder.svg"}
+                alt={playerName}
+                className="w-full h-full rounded-full object-cover"
+              />
+            )}
           </div>
           {/* Player info */}
           <div className="flex flex-col gap-1">
@@ -1104,7 +1129,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
             {tableStatLines.length === 0 ? (
               <tr className="border-b border-slate-800/50">
                 <td colSpan={11} className="px-1.5 py-8 text-center text-slate-400 text-sm">
-                  No game data available for 2024-25 season
+                  No game data available for {selectedRange === "Season" ? "2025-26" : "2024-25"} season
                 </td>
               </tr>
             ) : (
@@ -1137,9 +1162,12 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
                       {stat.fg || (stat.fgm !== undefined && stat.fga !== undefined ? `${stat.fgm}/${stat.fga}` : "0/0")}
                     </td>
                     <td
-                      className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.threePtr || stat.threePm || 0, Number.parseFloat(((displayAverages.threePtr || "0/0") as string).split("/")[0]))}`}
+                      className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.threePm ?? 0, Number.parseFloat(((displayAverages.threePtr || "0/0") as string).split("/")[0]))}`}
                     >
-                      {stat.threePtr || stat.threePm || 0}
+                      {(() => {
+                        const val = stat.threePtr && stat.threePtr !== "0/0" ? stat.threePtr : (stat.threePm !== undefined && stat.threePa !== undefined ? `${stat.threePm}/${stat.threePa}` : "0/0");
+                        return val === "0/0" ? "-" : val;
+                      })()}
                     </td>
                     <td
                       className={`px-1.5 py-1.5 text-center text-white font-semibold rounded transition-colors ${getColorByDeviation(stat.reb, displayAverages.reb)}`}
@@ -1204,7 +1232,10 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
                 <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.pts}</td>
                 <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.fg || "0/0"}</td>
                 <td className="px-1.5 py-1.5 text-center text-white font-semibold">
-                  {displayAverages.threePtr || displayAverages.threePm || 0}
+                  {(() => {
+                    const val = displayAverages.threePtr || displayAverages.threePm || 0;
+                    return (val === "0/0" || val === 0) ? "-" : val;
+                  })()}
                 </td>
                 <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.reb}</td>
                 <td className="px-1.5 py-1.5 text-center text-white font-semibold">{displayAverages.ast}</td>

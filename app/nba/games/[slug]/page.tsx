@@ -10,7 +10,7 @@ import { LineupTable } from "@/components/game/lineup-table";
 import { PlayerPropsTab } from "@/components/game/player-props-tab";
 import { BenchPropsTab } from "@/components/game/bench-props-tab";
 import { TeamPropsTab } from "@/components/game/team-props-tab";
-import { useSportsData, getPlayerRecentGames, getPlayerAverages } from "@/hooks/use-sports-data";
+import { useSportsData, useSportsData2025, getPlayerRecentGames, getPlayerAverages } from "@/hooks/use-sports-data";
 import useTeamRostersById from "@/hooks/use-team-rosters-by-id";
 import { TeamLogoPlaceholder } from "@/components/team-logo-placeholder";
 
@@ -32,9 +32,10 @@ export default function GamePage() {
 
   const { home, away } = useMemo(() => parseSlug(slug), [slug]);
   const { gameData, playerStatsByName, gameDataMap, teamIdMap, loading: dataLoading } = useSportsData();
+  const { playerStatsByName: playerStatsByName2025, gameDataMap: gameDataMap2025, teamIdMap: teamIdMap2025, loading: dataLoading2025 } = useSportsData2025();
   const { rosters, loading: rosterLoading } = useTeamRostersById();
 
-  const isDataLoaded = !dataLoading && !rosterLoading;
+  const isDataLoaded = !dataLoading && !rosterLoading && !dataLoading2025;
 
   // Timer for loading screen - continues until content is ready to show
   useEffect(() => {
@@ -95,10 +96,15 @@ export default function GamePage() {
       (players || []).map((p, index) => {
         const playerName = p.player_name || `Player-${index}`;
         const seasonGames = getPlayerRecentGames(playerStatsByName, playerName, teamIdMap, 200, gameDataMap);
+        const seasonGames2025 = getPlayerRecentGames(playerStatsByName2025, playerName, teamIdMap2025, 200, gameDataMap2025);
         const recentGames = seasonGames.slice(0, 10);
         const last5 = seasonGames.slice(0, 5);
         const averageSample = last5.length > 0 ? last5 : seasonGames;
         const averages = getPlayerAverages(averageSample);
+        
+        const last52025 = seasonGames2025.slice(0, 5);
+        const averageSample2025 = last52025.length > 0 ? last52025 : seasonGames2025;
+        const averages2025 = getPlayerAverages(averageSample2025);
 
         return {
           id: String(p.player_id || `${teamCode}-${index}`),
@@ -106,9 +112,11 @@ export default function GamePage() {
           pos: p.position || "",
           gs: recentGames.length,
           statsAvg: averages,
+          statsAvg2025: averages2025,
           recentGames,
           last5Games: last5,
           seasonGames,
+          seasonGames2025,
           currentLines: {
             pts: averages.pts,
             reb: averages.reb,
@@ -116,7 +124,7 @@ export default function GamePage() {
           },
         };
       });
-  }, [playerStatsByName, teamIdMap, gameDataMap]);  const displayGameData = useMemo(() => {
+  }, [playerStatsByName, teamIdMap, gameDataMap, playerStatsByName2025, teamIdMap2025, gameDataMap2025]);  const displayGameData = useMemo(() => {
     if (!game || !homeRoster || !awayRoster) return null;
     
     const defaultRecord = { wins: 0, losses: 0 };

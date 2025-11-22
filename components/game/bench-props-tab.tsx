@@ -15,12 +15,21 @@ interface Player {
     threePm: number
     pra: number
   }
+  statsAvg2025?: {
+    pts: number
+    reb: number
+    ast: number
+    threePm: number
+    pra: number
+  }
   currentLines: {
     pts: number
   }
   last5Games?: any[]
   recentGames?: any[]
   seasonGames?: any[]
+  last5Games2025?: any[]
+  seasonGames2025?: any[]
 }
 
 interface GameData {
@@ -65,6 +74,7 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
           <div className="space-y-4">
             {teamABench.map((player) => {
               const statLines = player.seasonGames ?? player.recentGames ?? player.last5Games
+              const statLines2025 = player.seasonGames2025 ?? player.last5Games2025 ?? []
 
               return (
                 <div
@@ -77,12 +87,14 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
                     position={player.pos}
                     opponent={game.teamB.name}
                     statLines={statLines}
+                    statLines2025={statLines2025}
                     averages={player.statsAvg}
+                    averages2025={player.statsAvg2025}
                     location="Away"
                     status="Expected"
                   />
                   <div className="md:justify-self-end">
-                    <PlayerCard2 playerName={player.name} />
+                    <PlayerCard2 playerName={player.name} statLines={statLines2025} />
                   </div>
                 </div>
               )
@@ -96,6 +108,7 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
           <div className="space-y-4">
             {teamBBench.map((player) => {
               const statLines = player.seasonGames ?? player.recentGames ?? player.last5Games
+              const statLines2025 = player.seasonGames2025 ?? player.last5Games2025 ?? []
 
               return (
                 <div
@@ -108,12 +121,14 @@ export function BenchPropsTab({ game }: BenchPropsTabProps) {
                     position={player.pos}
                     opponent={game.teamA.name}
                     statLines={statLines}
+                    statLines2025={statLines2025}
                     averages={player.statsAvg}
+                    averages2025={player.statsAvg2025}
                     location="Home"
                     status="Expected"
                   />
                   <div className="md:justify-self-end">
-                    <PlayerCard2 playerName={player.name} />
+                    <PlayerCard2 playerName={player.name} statLines={statLines2025} />
                   </div>
                 </div>
               )
