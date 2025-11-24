@@ -905,7 +905,7 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
     const isExpanded = expandedBestLine === normalizedKey
 
     return (
-      <td key={`best-${index}`} className="relative px-1.5 py-1.5 text-center">
+      <td key={`best-${index}`} className="px-1.5 py-1.5 text-center">
         <button
           type="button"
           onClick={() => setExpandedBestLine(isExpanded ? null : normalizedKey)}
@@ -914,28 +914,6 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
           <div className="tabular-nums">{formattedLine}</div>
           <div className="tabular-nums text-[11px] font-medium text-slate-300">{formattedPrice}</div>
         </button>
-        {isExpanded && (
-          <div className="absolute left-1/2 top-full z-20 mt-1 w-48 -translate-x-1/2 rounded-md border border-slate-700 bg-slate-900 p-2 shadow-lg">
-            <div className="mb-2 flex flex-wrap justify-center gap-1">
-              {altLines.map((altLine) => (
-                <button
-                  key={`${normalizedKey}-${altLine}`}
-                  type="button"
-                  className="rounded border border-slate-700/60 bg-slate-800 px-2 py-1 text-[11px] font-semibold text-white transition hover:border-emerald-500/60 hover:text-emerald-200"
-                >
-                  {altLine}
-                  <span className="ml-1 text-slate-400">-110</span>
-                </button>
-              ))}
-            </div>
-            <button
-              type="button"
-              className="w-full rounded bg-emerald-600 px-2 py-1 text-xs font-semibold text-white transition hover:bg-emerald-500"
-            >
-              Track Bet
-            </button>
-          </div>
-        )}
       </td>
     )
   }
@@ -1254,6 +1232,55 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({
           </table>
         </div>
       </div>
+
+      {/* ALT LINE EXPANDED FOOTER */}
+      {expandedBestLine && (
+        <div className="mt-4 w-full rounded-lg border border-slate-800 bg-slate-900 shadow-lg p-4">
+          {/* Header Row */}
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-base font-semibold text-white">
+              {expandedBestLine === "3PT" ? "Three Pointers Made" : expandedBestLine}
+            </h3>
+
+            <div className="flex items-center gap-2">
+              <button className="rounded bg-emerald-600 px-3 py-1 text-xs font-semibold text-white hover:bg-emerald-500">
+                Track bet
+              </button>
+
+              <button
+                onClick={() => setExpandedBestLine(null)}
+                className="rounded p-1 hover:bg-slate-800 transition"
+              >
+                <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* ALT LINES ROW */}
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
+            {altLines.map((line) => {
+              const odds1 = Math.floor(Math.random() * 400) - 200
+              const odds2 = Math.floor(Math.random() * 400) - 200
+
+              return (
+                <div
+                  key={line}
+                  className="rounded-md border border-slate-700 bg-slate-800 px-2 py-1 flex flex-col items-center justify-center hover:border-emerald-500 transition cursor-pointer"
+                >
+                  <div className="text-white font-semibold text-sm tabular-nums">{line}</div>
+
+                  <div className="flex flex-col text-[11px] font-medium gap-0">
+                    <span className="text-purple-400 tabular-nums">{odds1 > 0 ? `+${odds1}` : odds1}</span>
+                    <span className="text-blue-400 tabular-nums">{odds2 > 0 ? `+${odds2}` : odds2}</span>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Expand Breakdown Footer */}
       <div className="flex items-center justify-between pt-2 border-t border-slate-800/50">

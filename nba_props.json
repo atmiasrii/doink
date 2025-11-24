@@ -1,0 +1,1604 @@
+[
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Brice Sensabaugh",
+    "position": "F",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-425",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-145",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "+140",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+290",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+500",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+900",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "FanDuel",
+          "note": "No FanDuel odds available for this player for 'Rebounds'"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "DraftKings",
+          "note": "No DraftKings odds available for this player for 'Rebounds'"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Ace Bailey",
+    "position": "F",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-1450",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-1000",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-360",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-372",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-375",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-156",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-146",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-165",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+144",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+133",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+120",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+285",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+260",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+200",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+479",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+340",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+970",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+900",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+550",
+          "sportsbook": "Fanatics"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "GSW",
+      "team_b": "UTA"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Brandin Podziemski",
+    "position": "G",
+    "player_team": "GSW",
+    "props": {
+      "rebounds": [
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "FanDuel",
+          "note": "No FanDuel odds available for this player for 'Rebounds'"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "DraftKings",
+          "note": "No DraftKings odds available for this player for 'Rebounds'"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "Fanatics",
+          "note": "No Fanatics odds available for this player for 'Rebounds'"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "GSW",
+      "team_b": "UTA"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Draymond Green",
+    "position": "F",
+    "player_team": "GSW",
+    "props": {
+      "rebounds": [
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-2500",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-900",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-375",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-175",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "u",
+          "odds": "-133",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+101",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "u",
+          "odds": "-145",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+110",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+170",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+300",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+475",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+800",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "FanDuel",
+          "note": "No FanDuel odds available for this player for 'Rebounds'"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Isaiah Collier",
+    "position": "G",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-425",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-149",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-145",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "+161",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "+140",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+347",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+290",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+740",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+550",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "FanDuel",
+          "note": "No FanDuel odds available for this player for 'Rebounds'"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "GSW",
+      "team_b": "UTA"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Jimmy Butler",
+    "position": "F",
+    "player_team": "GSW",
+    "props": {
+      "rebounds": [
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-1640",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-2500",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-610",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-1100",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-800",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-290",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-350",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "u",
+          "odds": "+115",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-152",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "u",
+          "odds": "+115",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-165",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-196",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "6.5",
+          "outcome": "u",
+          "odds": "-148",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+112",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+117",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+120",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+201",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+180",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+185",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+339",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+300",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+567",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+430",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+500",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+1000",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+900",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "11.5",
+          "outcome": "o",
+          "odds": "+1200",
+          "sportsbook": "FanDuel"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Jusuf Nurkić",
+    "position": "C",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-2800",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-2200",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-800",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-1120",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-1200",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "-440",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "-547",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "-550",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "-230",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "-306",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "-325",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "-146",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "-179",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "-175",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "-111",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "-104",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "-115",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+152",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+145",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+130",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "11.5",
+          "outcome": "o",
+          "odds": "+235",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "11.5",
+          "outcome": "o",
+          "odds": "+230",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "11.5",
+          "outcome": "o",
+          "odds": "+185",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "12.5",
+          "outcome": "o",
+          "odds": "+350",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "12.5",
+          "outcome": "o",
+          "odds": "+360",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "12.5",
+          "outcome": "o",
+          "odds": "+270",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "13.5",
+          "outcome": "o",
+          "odds": "+566",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "13.5",
+          "outcome": "o",
+          "odds": "+520",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "13.5",
+          "outcome": "o",
+          "odds": "+375",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "14.5",
+          "outcome": "o",
+          "odds": "+920",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "14.5",
+          "outcome": "o",
+          "odds": "+600",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "15.5",
+          "outcome": "o",
+          "odds": "+1100",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "15.5",
+          "outcome": "o",
+          "odds": "+850",
+          "sportsbook": "Fanatics"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Keyonte George",
+    "position": "G",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-1100",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-900",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-300",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-279",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-300",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-115",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-113",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-115",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+194",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+184",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+160",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+400",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+378",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+320",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+790",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+600",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+1400",
+          "sportsbook": "FanDuel"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Kyle Filipowski",
+    "position": "C",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-1640",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-1700",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-620",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-620",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-700",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-300",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-287",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-325",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-154",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-153",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-165",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "-107",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+116",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+110",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+200",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+166",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+160",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+310",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+296",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+270",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+430",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+478",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+400",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+1020",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+650",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "11.5",
+          "outcome": "o",
+          "odds": "+1060",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "13.5",
+          "outcome": "o",
+          "odds": "+2000",
+          "sportsbook": "FanDuel"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Lauri Markkanen",
+    "position": "F-C",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-2000",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-2500",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-900",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-720",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-900",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-340",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-329",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "-375",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-164",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-169",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "-175",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+108",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+112",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+105",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+210",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+188",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+160",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+320",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+325",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "8.5",
+          "outcome": "o",
+          "odds": "+270",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+500",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+562",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "9.5",
+          "outcome": "o",
+          "odds": "+425",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+1000",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "10.5",
+          "outcome": "o",
+          "odds": "+750",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "11.5",
+          "outcome": "o",
+          "odds": "+1200",
+          "sportsbook": "FanDuel"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "GSW",
+      "team_b": "UTA"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Moses Moody",
+    "position": "G",
+    "player_team": "GSW",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-800",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-236",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-275",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "u",
+          "odds": "-129",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-102",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "u",
+          "odds": "-114",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-114",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "u",
+          "odds": "-120",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-105",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+209",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+175",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+436",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+320",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+910",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+600",
+          "sportsbook": "Fanatics"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "GSW",
+      "team_b": "UTA"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Stephen Curry",
+    "position": "G",
+    "player_team": "GSW",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-1200",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-326",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-375",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "u",
+          "odds": "+104",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-137",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "u",
+          "odds": "+118",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-158",
+          "sportsbook": "FanDuel"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "-150",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "3.5",
+          "outcome": "u",
+          "odds": "+105",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+159",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+130",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+318",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+240",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+670",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "6.5",
+          "outcome": "o",
+          "odds": "+400",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "7.5",
+          "outcome": "o",
+          "odds": "+800",
+          "sportsbook": "Fanatics"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "UTA",
+      "team_b": "GSW"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Svi Mykhailiuk",
+    "position": "G-F",
+    "player_team": "UTA",
+    "props": {
+      "rebounds": [
+        {
+          "line": "1.5",
+          "outcome": "o",
+          "odds": "-375",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-125",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-165",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "+149",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "3.5",
+          "outcome": "o",
+          "odds": "+170",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+327",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "4.5",
+          "outcome": "o",
+          "odds": "+350",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+700",
+          "sportsbook": "DraftKings"
+        },
+        {
+          "line": "5.5",
+          "outcome": "o",
+          "odds": "+700",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "FanDuel",
+          "note": "No FanDuel odds available for this player for 'Rebounds'"
+        }
+      ]
+    }
+  },
+  {
+    "game_id": "GSW-UTA__11/25__8:30 AM",
+    "game_teams": {
+      "team_a": "GSW",
+      "team_b": "UTA"
+    },
+    "match_date": "11/25",
+    "match_time": "8:30 AM",
+    "player_name": "Will Richard",
+    "position": "G",
+    "player_team": "GSW",
+    "props": {
+      "rebounds": [
+        {
+          "line": "2.5",
+          "outcome": "o",
+          "odds": "-105",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": "2.5",
+          "outcome": "u",
+          "odds": "-125",
+          "sportsbook": "Fanatics"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "FanDuel",
+          "note": "No FanDuel odds available for this player for 'Rebounds'"
+        },
+        {
+          "line": null,
+          "outcome": null,
+          "odds": null,
+          "sportsbook": "DraftKings",
+          "note": "No DraftKings odds available for this player for 'Rebounds'"
+        }
+      ]
+    }
+  }
+]
